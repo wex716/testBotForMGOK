@@ -12,11 +12,38 @@ public class ApplicationLogic {
         return messageToUser;
     }
 
-    public SendMessage processWaitingViewApplicationHistory(String textFromUser, TransmittedData transmittedData) throws Exception {
+    public SendMessage processWaitingInputAddress(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
 
 
         return messageToUser;
+    }
 
+    public SendMessage processWaitingInputCabinetNumber(String textFromUser, TransmittedData transmittedData) throws Exception {
+        SendMessage messageToUser = new SendMessage();
+
+
+        return messageToUser;
+    }
+
+    public SendMessage processWaitingInputFullName(String textFromUser, TransmittedData transmittedData) throws Exception {
+        SendMessage messageToUser = new SendMessage();
+
+
+        return messageToUser;
+    }
+
+    public SendMessage processWaitingDescriptionProblem(String textFromUser, TransmittedData transmittedData) throws Exception {
+        SendMessage messageToUser = new SendMessage();
+
+
+        return messageToUser;
+    }
+
+    public SendMessage processWaitingDataVerification(String textFromUser, TransmittedData transmittedData) throws Exception {
+        SendMessage messageToUser = new SendMessage();
+
+
+        return messageToUser;
     }
 }
