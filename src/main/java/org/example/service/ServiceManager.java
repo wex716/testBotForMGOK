@@ -30,26 +30,27 @@ public class ServiceManager {
 
         //начало работы бота
         methods.put(State.WaitingCommandStart, startLogic::processWaitingCommandStart);
+        methods.put(State.WaitingQuestionsOrApplicationOrHistory, startLogic::processWaitingQuestionsOrApplicationOrHistory);
 
         //просмотр FAQ
-        methods.put(State.WaitingViewFAQ, faqLogic::processWaitingViewFAQ);
-        methods.put(State.WaitingViewProblemComputer, faqLogic::processWaitingViewProblemComputer);
-        methods.put(State.WaitingViewProblemPrinter, faqLogic::processWaitingViewProblemPrinter);
-        methods.put(State.WaitingViewProblemProjector, faqLogic::processWaitingViewProblemProjector);
+//        methods.put(State.WaitingViewFAQ, faqLogic::processWaitingViewFAQ);
+//        methods.put(State.WaitingViewProblemComputer, faqLogic::processWaitingViewProblemComputer);
+//        methods.put(State.WaitingViewProblemPrinter, faqLogic::processWaitingViewProblemPrinter);
+//        methods.put(State.WaitingViewProblemProjector, faqLogic::processWaitingViewProblemProjector);
 
         //работа в заявками
-        methods.put(State.WaitingSubmitApplication, applicationLogic::processWaitingSubmitApplication);
-        methods.put(State.WaitingInputAddress, applicationLogic::processWaitingInputAddress);
-        methods.put(State.WaitingInputCabinetNumber, applicationLogic::processWaitingInputCabinetNumber);
-        methods.put(State.WaitingInputFullName, applicationLogic::processWaitingInputFullName);
-        methods.put(State.WaitingDescriptionProblem, applicationLogic::processWaitingDescriptionProblem);
-        methods.put(State.WaitingDataVerification, applicationLogic::processWaitingDataVerification);
+//        methods.put(State.WaitingSubmitApplication, applicationLogic::processWaitingSubmitApplication);
+//        methods.put(State.WaitingInputAddress, applicationLogic::processWaitingInputAddress);
+//        methods.put(State.WaitingInputCabinetNumber, applicationLogic::processWaitingInputCabinetNumber);
+//        methods.put(State.WaitingInputFullName, applicationLogic::processWaitingInputFullName);
+//        methods.put(State.WaitingDescriptionProblem, applicationLogic::processWaitingDescriptionProblem);
+//        methods.put(State.WaitingDataVerification, applicationLogic::processWaitingDataVerification);
 
         //история заявок
-        methods.put(State.WaitingViewApplicationHistory, historyApplicationLogic::processWaitingViewApplicationHistory);
-        methods.put(State.WaitingFirstViewCommands, historyApplicationLogic::processWaitingFirstViewCommands);
-        methods.put(State.WaitingMiddleViewCommands, historyApplicationLogic::processWaitingMiddleViewCommands);
-        methods.put(State.WaitingLastViewCommands, historyApplicationLogic::processWaitingLastViewCommands);
+//        methods.put(State.WaitingViewApplicationHistory, historyApplicationLogic::processWaitingViewApplicationHistory);
+//        methods.put(State.WaitingFirstViewCommands, historyApplicationLogic::processWaitingFirstViewCommands);
+//        methods.put(State.WaitingMiddleViewCommands, historyApplicationLogic::processWaitingMiddleViewCommands);
+//        methods.put(State.WaitingLastViewCommands, historyApplicationLogic::processWaitingLastViewCommands);
     }
 
     public SendMessage callLogicMethod(String textFromUser, TransmittedData transmittedData) throws Exception {
