@@ -8,90 +8,6 @@ import java.util.List;
 
 
 public class InlineKeyboardsStorage {
-    public static InlineKeyboardMarkup getFirstShowKeyboard() {
-        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
-
-        List<InlineKeyboardButton> row = null;
-        InlineKeyboardButton button = null;
-
-        row = new ArrayList<>();
-        button = new InlineKeyboardButton();
-        button.setText(InlineButtonsStorage.MoveNextShow.getTitle());
-        button.setCallbackData(InlineButtonsStorage.MoveNextShow.getCallBackData());
-        row.add(button);
-        keyboard.add(row);
-
-        row = new ArrayList<>();
-        button = new InlineKeyboardButton();
-        button.setText(InlineButtonsStorage.FinishShow.getTitle());
-        button.setCallbackData(InlineButtonsStorage.FinishShow.getCallBackData());
-        row.add(button);
-        keyboard.add(row);
-
-        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        inlineKeyboardMarkup.setKeyboard(keyboard);
-
-        return inlineKeyboardMarkup;
-    }
-
-    public static InlineKeyboardMarkup getLastShowKeyboard() {
-        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
-
-        List<InlineKeyboardButton> row = null;
-        InlineKeyboardButton button = null;
-
-        row = new ArrayList<>();
-        button = new InlineKeyboardButton();
-        button.setText(InlineButtonsStorage.MovePrevShow.getTitle());
-        button.setCallbackData(InlineButtonsStorage.MovePrevShow.getCallBackData());
-        row.add(button);
-        keyboard.add(row);
-
-        row = new ArrayList<>();
-        button = new InlineKeyboardButton();
-        button.setText(InlineButtonsStorage.FinishShow.getTitle());
-        button.setCallbackData(InlineButtonsStorage.FinishShow.getCallBackData());
-        row.add(button);
-        keyboard.add(row);
-
-        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        inlineKeyboardMarkup.setKeyboard(keyboard);
-
-        return inlineKeyboardMarkup;
-    }
-
-    public static InlineKeyboardMarkup getMiddleShowKeyboard() {
-        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
-
-        List<InlineKeyboardButton> row = null;
-        InlineKeyboardButton button = null;
-
-        row = new ArrayList<>();
-        button = new InlineKeyboardButton();
-        button.setText(InlineButtonsStorage.MovePrevShow.getTitle());
-        button.setCallbackData(InlineButtonsStorage.MovePrevShow.getCallBackData());
-        row.add(button);
-        keyboard.add(row);
-
-        row = new ArrayList<>();
-        button = new InlineKeyboardButton();
-        button.setText(InlineButtonsStorage.MoveNextShow.getTitle());
-        button.setCallbackData(InlineButtonsStorage.MoveNextShow.getCallBackData());
-        row.add(button);
-        keyboard.add(row);
-
-        row = new ArrayList<>();
-        button = new InlineKeyboardButton();
-        button.setText(InlineButtonsStorage.FinishShow.getTitle());
-        button.setCallbackData(InlineButtonsStorage.FinishShow.getCallBackData());
-        row.add(button);
-        keyboard.add(row);
-
-        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        inlineKeyboardMarkup.setKeyboard(keyboard);
-
-        return inlineKeyboardMarkup;
-    }
 
     public static InlineKeyboardMarkup getStartKeyboard() {
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
@@ -124,4 +40,119 @@ public class InlineKeyboardsStorage {
 
         return inlineKeyboardMarkup;
     }
+
+
+    public static InlineKeyboardMarkup getProblemSystemShowKeyboard() {
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row = null;
+        InlineKeyboardButton button = null;
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.ViewProblemComputer.getTitle());
+        button.setCallbackData(InlineButtonsStorage.ViewProblemComputer.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.ViewProblemPrinter.getTitle());
+        button.setCallbackData(InlineButtonsStorage.ViewProblemPrinter.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.ViewProblemProjector.getTitle());
+        button.setCallbackData(InlineButtonsStorage.ViewProblemProjector.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.BackToMenu.getTitle());
+        button.setCallbackData(InlineButtonsStorage.BackToMenu.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        inlineKeyboardMarkup.setKeyboard(keyboard);
+
+        return inlineKeyboardMarkup;
+    }
+
+    public static InlineKeyboardMarkup getProblemComputerKeyboard() {
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row = null;
+        InlineKeyboardButton button = null;
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.First.getTitle());
+        button.setCallbackData(InlineButtonsStorage.First.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.Second.getTitle());
+        button.setCallbackData(InlineButtonsStorage.Second.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.Third.getTitle());
+        button.setCallbackData(InlineButtonsStorage.Third.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.MovePrevShow.getTitle());
+        button.setCallbackData(InlineButtonsStorage.MovePrevShow.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.BackToMenu.getTitle());
+        button.setCallbackData(InlineButtonsStorage.BackToMenu.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        inlineKeyboardMarkup.setKeyboard(keyboard);
+
+        return inlineKeyboardMarkup;
+    }
+    public static InlineKeyboardMarkup getBackKeyboard() {
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row = null;
+        InlineKeyboardButton button = null;
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.MovePrevShow.getTitle());
+        button.setCallbackData(InlineButtonsStorage.MovePrevShow.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.BackToMenu.getTitle());
+        button.setCallbackData(InlineButtonsStorage.BackToMenu.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        inlineKeyboardMarkup.setKeyboard(keyboard);
+
+        return inlineKeyboardMarkup;
+    }
+
+
 }

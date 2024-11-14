@@ -13,7 +13,7 @@ public class StartLogic {
         messageToUser.setChatId(transmittedData.getChatId());
 
         if (!textFromUser.equals("/start")) {
-            messageToUser.setText("Ошибка запуска бота. Для старта пожалуйста введите /start");
+            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
             return messageToUser;
         }
 
@@ -29,21 +29,24 @@ public class StartLogic {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
-        if (!textFromUser.equals(InlineButtonsStorage.ShowQuestionsStart.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.SubmitApplication.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.SubmitHistory.getCallBackData())) {
+        if (!textFromUser.equals(InlineButtonsStorage.ShowQuestionsStart.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
             messageToUser.setText("Ошибка. Нажмите на кнопку.");
             return messageToUser;
         }
 
+
         if (textFromUser.equals(InlineButtonsStorage.ShowQuestionsStart.getCallBackData())) {
+            messageToUser.setText("Выберите, с чем возникла проблема");
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
+            return messageToUser;
+        }
 
-            messageToUser.setText("Выберите с чем возникла проблема/n Компьютер/n Принтер/n Проектор");
-
-
-            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getFirstShowKeyboard());
-
-            transmittedData.setState(State.WaitingFirstViewCommands);
-
-
+        if (!textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
+            transmittedData.setState(State.WaitingViewProblemComputer);
+        } else if (!textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
+            transmittedData.setState(State.WaitingViewProblemPrinter);
+        } else if (!textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
+            transmittedData.setState(State.WaitingViewProblemProjector);
             return messageToUser;
         }
         return messageToUser;
