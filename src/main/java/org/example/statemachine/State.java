@@ -1,7 +1,9 @@
 package org.example.statemachine;
 
 public class State {
+
     //начало бота
+
     public final static String WaitingCommandStart = "WaitingCommandStart";
 
     public final static String WaitingQuestionsOrApplicationOrHistory = "WaitingQuestionsOrApplicationOrHistory";

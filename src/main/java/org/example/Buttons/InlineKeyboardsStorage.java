@@ -28,6 +28,7 @@ public class InlineKeyboardsStorage {
         button.setCallbackData(InlineButtonsStorage.SubmitApplication.getCallBackData());
         row.add(button);
         keyboard.add(row);
+
         row = new ArrayList<>();
         button = new InlineKeyboardButton();
         button.setText(InlineButtonsStorage.SubmitHistory.getTitle());

@@ -12,14 +12,16 @@ public class FaqLogic {
     public SendMessage processWaitingViewProblemComputer(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
+
         messageToUser.setText("Список проблем: \n1. Отсутствует подключение к сети Интернет \n2. Не включается компьютер \n3. Проблема с монитором.");
-
-//        if (!textFromUser.equals(InlineButtonsStorage.First.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Second.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Third.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-//            messageToUser.setText("Ошибка. Нажмите на кнопку.");
-//            return messageToUser;
-//        }
-
         messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemComputerKeyboard());
+
+        if (!textFromUser.equals(InlineButtonsStorage.First.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Second.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Third.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+            messageToUser.setText("Ошибка. Нажмите на кнопку.");
+            return messageToUser;
+        }
+
+
 
         if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
             transmittedData.setState(State.WaitingFirstInfoProblemComputer);
