@@ -36,17 +36,21 @@ public class StartLogic {
         if (textFromUser.equals(InlineButtonsStorage.ShowQuestionsStart.getCallBackData())) {
             messageToUser.setText("Выберите, с чем возникла проблема");
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
-            return messageToUser;
-        } else if (!textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
+
             transmittedData.setState(State.WaitingViewProblemComputer);
-        } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
-            transmittedData.setState(State.WaitingViewProblemPrinter);
-        } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
-            transmittedData.setState(State.WaitingViewProblemProjector);
-        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-            transmittedData.setState(State.WaitingCommandStart);
+
+            return messageToUser;
         }
+
+//        if (textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
+//            transmittedData.setState(State.WaitingViewProblemComputer);
+//        } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
+//            transmittedData.setState(State.WaitingViewProblemPrinter);
+//        } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
+//            transmittedData.setState(State.WaitingViewProblemProjector);
+//        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+//            transmittedData.setState(State.WaitingCommandStart);
+//        }
         return messageToUser;
     }
 }
-
