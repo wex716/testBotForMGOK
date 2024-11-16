@@ -41,13 +41,12 @@ public class StartLogic {
             return messageToUser;
         }
 
-        if (!textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
+        if (textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
             transmittedData.setState(State.WaitingViewProblemComputer);
-        } else if (!textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
+        } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
             transmittedData.setState(State.WaitingViewProblemPrinter);
-        } else if (!textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
+        } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
             transmittedData.setState(State.WaitingViewProblemProjector);
-            return messageToUser;
         }
         return messageToUser;
     }
