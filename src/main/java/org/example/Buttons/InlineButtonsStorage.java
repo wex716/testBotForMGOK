@@ -2,11 +2,11 @@ package org.example.Buttons;
 
 public class InlineButtonsStorage {
 
-    public final static InlineButton MovePrevShow = new InlineButton("Предыдущий просмотр", "MovePrevShow");
+    public final static InlineButton MovePrevShow = new InlineButton("Назад", "MovePrevShow");
     public final static InlineButton BackToMenu = new InlineButton("Главное меню", "BackToMenu");
 
 
-    public final static InlineButton ShowQuestionsStart = new InlineButton("Частые вопросы", "ShowCommandsStart");
+    public final static InlineButton ShowQuestionsStart = new InlineButton("Частые вопросы", "ShowQuestionsStart");
 
     public final static InlineButton SubmitApplication = new InlineButton("Оставить заявку", "SubmitApplication");
 

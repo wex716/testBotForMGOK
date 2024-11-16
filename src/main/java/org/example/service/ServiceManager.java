@@ -20,7 +20,6 @@ public class ServiceManager {
     private HistoryApplicationLogic historyApplicationLogic;
 
 
-
     public ServiceManager() {
 
         methods = new HashMap<>();
@@ -30,20 +29,18 @@ public class ServiceManager {
 
         //начало работы бота
         methods.put(State.WaitingCommandStart, startLogic::processWaitingCommandStart);
+
         methods.put(State.WaitingQuestionsOrApplicationOrHistory, startLogic::processWaitingQuestionsOrApplicationOrHistory);
 
         //просмотр FAQ
         methods.put(State.WaitingViewProblemComputer, faqLogic::processWaitingViewProblemComputer);
 
         methods.put(State.WaitingFirstInfoProblemComputer, faqLogic::processWaitingFirstInfoProblemComputer);
-
         methods.put(State.WaitingSecondInfoProblemComputer, faqLogic::processWaitingSecondInfoProblemComputer);
         methods.put(State.WaitingThirdInfoProblemComputer, faqLogic::processWaitingThirdInfoProblemComputer);
 
         methods.put(State.WaitingViewProblemPrinter, faqLogic::processWaitingViewProblemPrinter);
         methods.put(State.WaitingViewProblemProjector, faqLogic::processWaitingViewProblemProjector);
-
-
     }
 
     public SendMessage callLogicMethod(String textFromUser, TransmittedData transmittedData) throws Exception {

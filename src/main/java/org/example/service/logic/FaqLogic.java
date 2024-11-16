@@ -12,26 +12,29 @@ public class FaqLogic {
     public SendMessage processWaitingViewProblemComputer(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
-
         messageToUser.setText("Список проблем: \n1. Отсутствует подключение к сети Интернет \n2. Не включается компьютер \n3. Проблема с монитором.");
 
+//        if (!textFromUser.equals(InlineButtonsStorage.First.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Second.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Third.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+//            messageToUser.setText("Ошибка. Нажмите на кнопку.");
+//            return messageToUser;
+//        }
 
-        if (!textFromUser.equals(InlineButtonsStorage.First.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Second.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Third.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-            messageToUser.setText("Ошибка. Нажмите на кнопку.");
-            return messageToUser;
-        }
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemComputerKeyboard());
 
         if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
             transmittedData.setState(State.WaitingFirstInfoProblemComputer);
-        } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
+        }
+        if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
             transmittedData.setState(State.WaitingSecondInfoProblemComputer);
-        } else if (textFromUser.equals(InlineButtonsStorage.Third.getCallBackData())) {
+        }
+        if (textFromUser.equals(InlineButtonsStorage.Third.getCallBackData())) {
             transmittedData.setState(State.WaitingThirdInfoProblemComputer);
-        } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+        }
+        if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
             transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
-        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+        }
+        if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
             transmittedData.setState(State.WaitingCommandStart);
-            return messageToUser;
         }
         return messageToUser;
     }
@@ -40,9 +43,6 @@ public class FaqLogic {
             Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
-
-        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
-
 
         messageToUser.setText("Отсутствует подключение к сети Интернет\n" +
                 "При отсутствии подключения к сети Интернет на компьютере:\n" +
@@ -55,12 +55,14 @@ public class FaqLogic {
                 "3. Найдите ближайшую рабочую WI-FI сеть;\n" +
                 "4. Нажмите на кнопку \"Подключиться\".\n");
 
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
 
-        if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-            transmittedData.setState(State.WaitingCommandStart);
-            messageToUser.setText("Вы вернулись в главное меню");
-        } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+        if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
             transmittedData.setState(State.WaitingViewProblemComputer);
+        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+            transmittedData.setState(State.WaitingCommandStart);
+            messageToUser.setText("Вы вернулись в главное меню...");
+            return messageToUser;
         }
         return messageToUser;
     }
@@ -70,16 +72,18 @@ public class FaqLogic {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
-
         messageToUser.setText("1. Проверьте кабель питания (подключен ли он к компьютеру и вставлена ли вилка в розетку);\n" +
                 "2. Проверьте кнопку на блоке питания (должна быть в режиме \"I\");\n" +
                 "3. Если Ваш компьютер подключен к сети электропитания через удлинитель, проверьте включен ли он;\n");
 
-        if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-            transmittedData.setState(State.WaitingCommandStart);
-            messageToUser.setText("Вы вернулись в главное меню");
-        } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+        if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
             transmittedData.setState(State.WaitingViewProblemComputer);
+        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+            transmittedData.setState(State.WaitingCommandStart);
+            messageToUser.setText("Вы вернулись в главное меню...");
+            return messageToUser;
         }
         return messageToUser;
     }
@@ -102,11 +106,15 @@ public class FaqLogic {
                 "2. Проверьте кабель питания на мониторе;\n" +
                 "3. Проверьте включен ли монитор;\n");
 
-        if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-            transmittedData.setState(State.WaitingCommandStart);
-            messageToUser.setText("Вы вернулись в главное меню");
-        } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+        if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
             transmittedData.setState(State.WaitingViewProblemComputer);
+        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+            transmittedData.setState(State.WaitingCommandStart);
+            messageToUser.setText("Вы вернулись в главное меню...");
+            return messageToUser;
         }
         return messageToUser;
     }
@@ -114,6 +122,8 @@ public class FaqLogic {
     public SendMessage processWaitingViewProblemPrinter(String textFromUser, TransmittedData transmittedData) throws
             Exception {
         SendMessage messageToUser = new SendMessage();
+        messageToUser.setChatId(transmittedData.getChatId());
+        messageToUser.setText("dada");
 
 
         return messageToUser;
@@ -122,7 +132,8 @@ public class FaqLogic {
     public SendMessage processWaitingViewProblemProjector(String textFromUser, TransmittedData transmittedData) throws
             Exception {
         SendMessage messageToUser = new SendMessage();
-
+        messageToUser.setChatId(transmittedData.getChatId());
+        messageToUser.setText("asdadadada");
 
         return messageToUser;
     }
