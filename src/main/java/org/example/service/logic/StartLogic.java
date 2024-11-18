@@ -39,12 +39,34 @@ public class StartLogic {
 
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
 
-            transmittedData.setState(State.WaitingViewProblemComputer);
-
+//            transmittedData.setState(State.WaitingFirstInfoProblemComputer);
+//            transmittedData.setState(State.WaitingViewProblemPrinter);
+//            transmittedData.setState(State.WaitingViewProblemProjector);
             return messageToUser;
-        }
 
-/*        if (textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
+        } else {
+            if (textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
+                messageToUser.setText("Список проблем: \n1. Отсутствует подключение к сети Интернет \n2. Не включается компьютер \n3. Проблема с монитором.");
+                transmittedData.setState(State.WaitingViewProblemComputer);
+
+                messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
+
+            } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
+                messageToUser.setText("принтер");
+                transmittedData.setState(State.WaitingViewProblemPrinter);
+
+
+            } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
+                messageToUser.setText("проектор");
+                transmittedData.setState(State.WaitingViewProblemProjector);
+
+            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+                messageToUser.setText("меню");
+                transmittedData.setState(State.WaitingCommandStart);
+            }
+
+
+        /*if (textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
             transmittedData.setState(State.WaitingViewProblemComputer);
         } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
             transmittedData.setState(State.WaitingViewProblemPrinter);
@@ -53,6 +75,8 @@ public class StartLogic {
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
             transmittedData.setState(State.WaitingCommandStart);
         }*/
-        return messageToUser;
+
+            return messageToUser;
+        }
     }
 }

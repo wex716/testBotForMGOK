@@ -22,6 +22,4 @@ public class InlineButtonsStorage {
 
     public final static InlineButton ViewProblemPrinter = new InlineButton("Принтер", "ViewProblemPrinter");
     public final static InlineButton ViewProblemProjector = new InlineButton("Проектор", "ViewProblemProjector");
-
-
 }

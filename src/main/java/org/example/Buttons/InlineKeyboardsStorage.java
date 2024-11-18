@@ -130,7 +130,7 @@ public class InlineKeyboardsStorage {
         return inlineKeyboardMarkup;
     }
 
-    public static InlineKeyboardMarkup getProblemTwoButtonsKeyboard() {
+    public static InlineKeyboardMarkup getProblemTwoFoursButtonsKeyboard() {
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
 
         List<InlineKeyboardButton> row = null;
@@ -147,6 +147,20 @@ public class InlineKeyboardsStorage {
         button = new InlineKeyboardButton();
         button.setText(InlineButtonsStorage.Second.getTitle());
         button.setCallbackData(InlineButtonsStorage.Second.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.MovePrevShow.getTitle());
+        button.setCallbackData(InlineButtonsStorage.MovePrevShow.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.BackToMenu.getTitle());
+        button.setCallbackData(InlineButtonsStorage.BackToMenu.getCallBackData());
         row.add(button);
         keyboard.add(row);
 
