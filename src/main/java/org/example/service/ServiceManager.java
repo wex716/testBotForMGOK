@@ -32,18 +32,25 @@ public class ServiceManager {
 
         methods.put(State.WaitingQuestionsOrApplicationOrHistory, startLogic::processWaitingQuestionsOrApplicationOrHistory);
 
-        //просмотр FAQ
+        //просмотр комп
         methods.put(State.WaitingViewProblemComputer, faqLogic::processWaitingViewProblemComputer);
 
         methods.put(State.WaitingFirstInfoProblemComputer, faqLogic::processWaitingFirstInfoProblemComputer);
         methods.put(State.WaitingSecondInfoProblemComputer, faqLogic::processWaitingSecondInfoProblemComputer);
         methods.put(State.WaitingThirdInfoProblemComputer, faqLogic::processWaitingThirdInfoProblemComputer);
 
+        // принтер
         methods.put(State.WaitingViewProblemPrinter, faqLogic::processWaitingViewProblemPrinter);
         methods.put(State.WaitingFirstInfoProblemPrinter, faqLogic::processWaitingFirstInfoProblemPrinter);
         methods.put(State.WaitingSecondInfoProblemPrinter, faqLogic::processWaitingSecondInfoProblemPrinter);
 
+
+        //проектор
         methods.put(State.WaitingViewProblemProjector, faqLogic::processWaitingViewProblemProjector);
+
+        methods.put(State.WaitingFirstInfoProblemProjector, faqLogic::processWaitingFirstInfoProblemProjector);
+        methods.put(State.WaitingSecondInfoProblemProjector, faqLogic::processWaitingSecondInfoProblemProjector);
+        methods.put(State.WaitingThirdInfoProblemProjector, faqLogic::processWaitingThirdInfoProblemProjector);
     }
 
     public SendMessage callLogicMethod(String textFromUser, TransmittedData transmittedData) throws Exception {

@@ -83,7 +83,7 @@ public class InlineKeyboardsStorage {
         return inlineKeyboardMarkup;
     }
 
-    public static InlineKeyboardMarkup getProblemComputerKeyboard() {
+    public static InlineKeyboardMarkup getProblemFiveButtonsKeyboard() {
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
 
         List<InlineKeyboardButton> row = null;
@@ -130,7 +130,7 @@ public class InlineKeyboardsStorage {
         return inlineKeyboardMarkup;
     }
 
-    public static InlineKeyboardMarkup getProblemPrinterKeyboard() {
+    public static InlineKeyboardMarkup getProblemTwoButtonsKeyboard() {
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
 
         List<InlineKeyboardButton> row = null;

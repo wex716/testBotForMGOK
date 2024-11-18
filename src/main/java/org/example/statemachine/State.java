@@ -19,4 +19,9 @@ public class State {
 
 
     public final static String WaitingViewProblemProjector = "WaitingViewProblemProjector";
+
+    public final static String WaitingFirstInfoProblemProjector = "WaitingFirstInfoProblemProjector";
+    public final static String WaitingSecondInfoProblemProjector = "WaitingSecondInfoProblemProjector";
+    public final static String WaitingThirdInfoProblemProjector = "WaitingThirdInfoProblemProjector";
+
 }

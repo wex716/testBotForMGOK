@@ -15,26 +15,24 @@ public class FaqLogic {
 
         messageToUser.setText("Список проблем: \n1. Отсутствует подключение к сети Интернет \n2. Не включается компьютер \n3. Проблема с монитором.");
 
-        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemComputerKeyboard());
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
         if (!textFromUser.equals(InlineButtonsStorage.First.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Second.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Third.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
             messageToUser.setText("Ошибка. Нажмите на кнопку.");
+
+            if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
+                transmittedData.setState(State.WaitingFirstInfoProblemComputer);
+            } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
+                transmittedData.setState(State.WaitingSecondInfoProblemComputer);
+            } else if (textFromUser.equals(InlineButtonsStorage.Third.getCallBackData())) {
+                transmittedData.setState(State.WaitingThirdInfoProblemComputer);
+            } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+                transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+                transmittedData.setState(State.WaitingCommandStart);
+            }
             return messageToUser;
         }
-
-
-        if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
-            transmittedData.setState(State.WaitingFirstInfoProblemComputer);
-        } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
-            transmittedData.setState(State.WaitingSecondInfoProblemComputer);
-        } else if (textFromUser.equals(InlineButtonsStorage.Third.getCallBackData())) {
-            transmittedData.setState(State.WaitingThirdInfoProblemComputer);
-        } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
-        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-            transmittedData.setState(State.WaitingCommandStart);
-        }
-
         return messageToUser;
     }
 
@@ -81,7 +79,6 @@ public class FaqLogic {
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
             transmittedData.setState(State.WaitingCommandStart);
             messageToUser.setText("Вы вернулись в главное меню...");
-            return messageToUser;
         }
         return messageToUser;
     }
@@ -104,7 +101,6 @@ public class FaqLogic {
                 "2. Проверьте кабель питания на мониторе;\n" +
                 "3. Проверьте включен ли монитор;\n");
 
-
         messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
 
         if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
@@ -112,7 +108,6 @@ public class FaqLogic {
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
             transmittedData.setState(State.WaitingCommandStart);
             messageToUser.setText("Вы вернулись в главное меню...");
-            return messageToUser;
         }
         return messageToUser;
     }
@@ -123,25 +118,22 @@ public class FaqLogic {
         messageToUser.setChatId(transmittedData.getChatId());
         messageToUser.setText("Список проблем: \n1. Не подключается к компьютеру \\n2. Замятие бумаги");
 
-        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemPrinterKeyboard());
-
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemTwoButtonsKeyboard());
 
         if (!textFromUser.equals(InlineButtonsStorage.First.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Second.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Third.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
             messageToUser.setText("Ошибка. Нажмите на кнопку.");
+
+            if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
+                transmittedData.setState(State.WaitingFirstInfoProblemPrinter);
+            } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
+                transmittedData.setState(State.WaitingSecondInfoProblemPrinter);
+            } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+                transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+                transmittedData.setState(State.WaitingCommandStart);
+            }
             return messageToUser;
         }
-
-        if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
-            transmittedData.setState(State.WaitingFirstInfoProblemPrinter);
-        } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
-            transmittedData.setState(State.WaitingSecondInfoProblemPrinter);
-        } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
-        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-            transmittedData.setState(State.WaitingCommandStart);
-        }
-
-
         return messageToUser;
     }
 
@@ -184,7 +176,6 @@ public class FaqLogic {
             transmittedData.setState(State.WaitingCommandStart);
             messageToUser.setText("Вы вернулись в главное меню...");
         }
-
         return messageToUser;
     }
 
@@ -193,9 +184,86 @@ public class FaqLogic {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
+        messageToUser.setText("1. Не выводится изображение\n 2. Проектор не включается\n 3. Слишком тусклое изображение");
 
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
+
+        if (!textFromUser.equals(InlineButtonsStorage.First.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Second.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.Third.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+            messageToUser.setText("Ошибка. Нажмите на кнопку.");
+
+            if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
+                transmittedData.setState(State.WaitingFirstInfoProblemProjector);
+            } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
+                transmittedData.setState(State.WaitingSecondInfoProblemProjector);
+            } else if (textFromUser.equals(InlineButtonsStorage.Third.getCallBackData())) {
+                transmittedData.setState(State.WaitingThirdInfoProblemProjector);
+            } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+                transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+                transmittedData.setState(State.WaitingCommandStart);
+            }
+            return messageToUser;
+        }
         return messageToUser;
     }
 
+    public SendMessage processWaitingFirstInfoProblemProjector(String textFromUser, TransmittedData transmittedData) throws
+            Exception {
+        SendMessage messageToUser = new SendMessage();
+        messageToUser.setChatId(transmittedData.getChatId());
 
+        messageToUser.setText("1. Проверьте, включен ли проектор/интерактивная доска;\n" +
+                "2. Проверьте кабель вывода изображения;\n" +
+                "3. На компьютере нажмите комбинацию клавиш WIN + P и в открывшейся панели выберите \"Повторяющийся\".\n");
+
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+        if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+            transmittedData.setState(State.WaitingViewProblemProjector);
+        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+            transmittedData.setState(State.WaitingCommandStart);
+            messageToUser.setText("Вы вернулись в главное меню...");
+        }
+        return messageToUser;
+    }
+
+    public SendMessage processWaitingSecondInfoProblemProjector(String textFromUser, TransmittedData
+            transmittedData) throws
+            Exception {
+        SendMessage messageToUser = new SendMessage();
+        messageToUser.setChatId(transmittedData.getChatId());
+
+        messageToUser.setText("1. Проверьте кабель питания, вставлен ли он в розетку;\n" +
+                "2. Проверьте рубильник в щитке:\n" +
+                "2.1 Если включен, но при этом нет электричества, обратитесь к заведующему хозяйству по зданию.\n");
+
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+        if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+            transmittedData.setState(State.WaitingViewProblemProjector);
+        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+            transmittedData.setState(State.WaitingCommandStart);
+            messageToUser.setText("Вы вернулись в главное меню...");
+        }
+        return messageToUser;
+    }
+
+    public SendMessage processWaitingThirdInfoProblemProjector(String textFromUser, TransmittedData transmittedData) throws
+            Exception {
+        SendMessage messageToUser = new SendMessage();
+        messageToUser.setChatId(transmittedData.getChatId());
+
+        messageToUser.setText("1. Попробуйте выключить свет в кабинете;\n" +
+                "2. Возьмите пульт и перейдите в настройки проектора, затем перейдите во вкладку \"Изображение\" и измените уровень яркости.\n");
+
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+        if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+            transmittedData.setState(State.WaitingViewProblemProjector);
+        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+            transmittedData.setState(State.WaitingCommandStart);
+            messageToUser.setText("Вы вернулись в главное меню...");
+        }
+        return messageToUser;
+    }
 }
