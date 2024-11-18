@@ -129,6 +129,33 @@ public class InlineKeyboardsStorage {
 
         return inlineKeyboardMarkup;
     }
+
+    public static InlineKeyboardMarkup getProblemPrinterKeyboard() {
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row = null;
+        InlineKeyboardButton button = null;
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.First.getTitle());
+        button.setCallbackData(InlineButtonsStorage.First.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.Second.getTitle());
+        button.setCallbackData(InlineButtonsStorage.Second.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        inlineKeyboardMarkup.setKeyboard(keyboard);
+
+        return inlineKeyboardMarkup;
+    }
+
     public static InlineKeyboardMarkup getBackKeyboard() {
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
 
@@ -154,6 +181,4 @@ public class InlineKeyboardsStorage {
 
         return inlineKeyboardMarkup;
     }
-
-
 }

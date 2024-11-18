@@ -40,6 +40,9 @@ public class ServiceManager {
         methods.put(State.WaitingThirdInfoProblemComputer, faqLogic::processWaitingThirdInfoProblemComputer);
 
         methods.put(State.WaitingViewProblemPrinter, faqLogic::processWaitingViewProblemPrinter);
+        methods.put(State.WaitingFirstInfoProblemPrinter, faqLogic::processWaitingFirstInfoProblemPrinter);
+        methods.put(State.WaitingSecondInfoProblemPrinter, faqLogic::processWaitingSecondInfoProblemPrinter);
+
         methods.put(State.WaitingViewProblemProjector, faqLogic::processWaitingViewProblemProjector);
     }
 
