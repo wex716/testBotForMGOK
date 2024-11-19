@@ -39,8 +39,8 @@ public class StartLogic {
 
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
 
-//            transmittedData.setState(State.WaitingFirstInfoProblemComputer);
-//            transmittedData.setState(State.WaitingViewProblemPrinter);
+            //transmittedData.setState(State.WaitingFirstInfoProblemComputer);
+            //transmittedData.setState(State.WaitingViewProblemPrinter);
 //            transmittedData.setState(State.WaitingViewProblemProjector);
             return messageToUser;
 
@@ -51,19 +51,24 @@ public class StartLogic {
 
                 messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
+                return messageToUser;
             } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
-                messageToUser.setText("принтер");
+                messageToUser.setText("Список проблем: \n1. Не подключается к компьютеру \n2. Замятие бумаги");
                 transmittedData.setState(State.WaitingViewProblemPrinter);
 
+                messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFoursButtonsKeyboard());
 
+                return messageToUser;
             } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
                 messageToUser.setText("проектор");
                 transmittedData.setState(State.WaitingViewProblemProjector);
 
+            } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+                transmittedData.setState(State.WaitingCommandStart);
             } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-                messageToUser.setText("меню");
                 transmittedData.setState(State.WaitingCommandStart);
             }
+
 
 
         /*if (textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {

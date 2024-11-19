@@ -35,9 +35,9 @@ public class ServiceManager {
         //просмотр комп
         methods.put(State.WaitingViewProblemComputer, faqLogic::processWaitingViewProblemComputer);
 
-        methods.put(State.WaitingFirstInfoProblemComputer, faqLogic::processWaitingFirstInfoProblemComputer);
+        /*methods.put(State.WaitingFirstInfoProblemComputer, faqLogic::processWaitingFirstInfoProblemComputer);
         methods.put(State.WaitingSecondInfoProblemComputer, faqLogic::processWaitingSecondInfoProblemComputer);
-        methods.put(State.WaitingThirdInfoProblemComputer, faqLogic::processWaitingThirdInfoProblemComputer);
+        methods.put(State.WaitingThirdInfoProblemComputer, faqLogic::processWaitingThirdInfoProblemComputer);*/
 
         // принтер
         methods.put(State.WaitingViewProblemPrinter, faqLogic::processWaitingViewProblemPrinter);

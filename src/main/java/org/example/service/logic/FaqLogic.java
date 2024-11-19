@@ -13,51 +13,73 @@ public class FaqLogic {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
-        /*messageToUser.setText("Список проблем: \n1. Отсутствует подключение к сети Интернет \n2. Не включается компьютер \n3. Проблема с монитором.");
-        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());*/
+        messageToUser.setText("Список проблем: \n1. Отсутствует подключение к сети Интернет \n2. Не включается компьютер \n3. Проблема с монитором.");
 
-            if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
-                messageToUser.setText("1. Отсутствует подключение к сети Интернет\n" +
-                        "\n" +
-                        "При отсутствии подключения к сети Интернет на компьютере:\n" +
-                        "1. Проверьте кабель сети в компьютере и розетке для кабеля сети;\n" +
-                        "2. Если Вы подключены через кабель сети и проверив его концы не обнаружили проблему, то оставьте запрос техническому специалисту.\n" +
-                        "\n" +
-                        "При отсутствии подключения к сети Интернет на ноутбуке:\n" +
-                        "1. Нажмите на значок настроек (шестерня);\n" +
-                        "2. Перейдите в раздел сети (WI-FI);\n" +
-                        "3. Найдите ближайшую рабочую WI-FI сеть;\n" +
-                        "4. Нажмите на кнопку \"Подключиться\".\n");
-            } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
-                messageToUser.setText("2. Не включается компьютер\n" +
-                        "\n" +
-                        "1. Проверьте кабель питания (подключен ли он к компьютеру и вставлена ли вилка в розетку);\n" +
-                        "2. Проверьте кнопку на блоке питания (должна быть в режиме \"I\");\n" +
-                        "3. Если Ваш компьютер подключен к сети электропитания через удлинитель, проверьте включен ли он;\n");
-            } else if (textFromUser.equals(InlineButtonsStorage.Third.getCallBackData())) {
-                messageToUser.setText("c.\tПроблема с монитором\n" +
-                        "\n" +
-                        "i.\tМонитор выводит изображения с помехами;\n" +
-                        "\n" +
-                        "1. Попробуйте переставить кабель вывода изображения в мониторе\n" +
-                        "2. Если монитор мигает, то:\n" +
-                        "2.1 Проверьте, включен ли компьютер;\n" +
-                        "2.2 Выключите и снова включите монитор.\n" +
-                        "\n" +
-                        "ii.\tМонитор не выводит изображение;\n" +
-                        "\n" +
-                        "1. Проверьте кабель вывода изображения с компьютера на монитор;\n" +
-                        "2. Проверьте кабель питания на мониторе;\n" +
-                        "3. Проверьте включен ли монитор;\n");
-            } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
+
+        if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
+
+            messageToUser.setText("Отсутствует подключение к сети Интернет\n" +
+                    "При отсутствии подключения к сети Интернет на компьютере:\n" +
+                    "1. Проверьте кабель сети в компьютере и розетке для кабеля сети;\n" +
+                    "2. Если Вы подключены через кабель сети и проверив его концы не обнаружили проблему, то оставьте запрос техническому специалисту.\n" +
+                    "\n" +
+                    "При отсутствии подключения к сети Интернет на ноутбуке:\n" +
+                    "1. Нажмите на значок настроек (шестерня);\n" +
+                    "2. Перейдите в раздел сети (WI-FI);\n" +
+                    "3. Найдите ближайшую рабочую WI-FI сеть;\n" +
+                    "4. Нажмите на кнопку \"Подключиться\".");
+
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+            if ((textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()))) {
                 transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
             } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
                 transmittedData.setState(State.WaitingCommandStart);
             }
-            return messageToUser;
+
+        } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
+
+            messageToUser.setText("1. Проверьте кабель питания (подключен ли он к компьютеру и вставлена ли вилка в розетку);\n" +
+                    "2. Проверьте кнопку на блоке питания (должна быть в режиме \"I\");\n" +
+                    "3. Если Ваш компьютер подключен к сети электропитания через удлинитель, проверьте включен ли он;\n");
+
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+            if ((textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()))) {
+                transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+                transmittedData.setState(State.WaitingCommandStart);
+            }
+
+        } else if (textFromUser.equals(InlineButtonsStorage.Third.getCallBackData())) {
+
+            messageToUser.setText("i. Монитор выводит изображения с помехами;\n" +
+                    "\n" +
+                    "1. Попробуйте переставить кабель вывода изображения в мониторе\n" +
+                    "2. Если монитор мигает, то:\n" +
+                    "2.1 Проверьте, включен ли компьютер;\n" +
+                    "2.2 Выключите и снова включите монитор.\n" +
+                    "\n" +
+                    "ii. Монитор не выводит изображение;\n" +
+                    "\n" +
+                    "1. Проверьте кабель вывода изображения с компьютера на монитор;\n" +
+                    "2. Проверьте кабель питания на мониторе;\n" +
+                    "3. Проверьте включен ли монитор;\n");
+
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+            if ((textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()))) {
+                transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+                transmittedData.setState(State.WaitingCommandStart);
+            }
+        }
+        return messageToUser;
     }
 
-    public SendMessage processWaitingFirstInfoProblemComputer(String textFromUser, TransmittedData transmittedData) throws
+
+    /*public SendMessage processWaitingFirstInfoProblemComputer(String textFromUser, TransmittedData transmittedData) throws
             Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
@@ -131,7 +153,7 @@ public class FaqLogic {
             messageToUser.setText("Вы вернулись в главное меню...");
         }
         return messageToUser;
-    }
+    }*/
 
     public SendMessage processWaitingViewProblemPrinter(String textFromUser, TransmittedData transmittedData) throws
             Exception {
@@ -139,21 +161,22 @@ public class FaqLogic {
         messageToUser.setChatId(transmittedData.getChatId());
         messageToUser.setText("Список проблем: \n1. Не подключается к компьютеру \n2. Замятие бумаги");
 
-        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemTwoFoursButtonsKeyboard());
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFoursButtonsKeyboard());
 
-            if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
-                transmittedData.setState(State.WaitingFirstInfoProblemPrinter);
-            } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
-                transmittedData.setState(State.WaitingSecondInfoProblemPrinter);
-            } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
-                transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
-            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-                transmittedData.setState(State.WaitingCommandStart);
-            }
-            return messageToUser;
+        if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
+            transmittedData.setState(State.WaitingFirstInfoProblemPrinter);
+        } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
+            transmittedData.setState(State.WaitingSecondInfoProblemPrinter);
+        } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+            transmittedData.setState(State.WaitingCommandStart);
+        }
+        return messageToUser;
     }
 
-    public SendMessage processWaitingFirstInfoProblemPrinter(String textFromUser, TransmittedData transmittedData) throws
+    public SendMessage processWaitingFirstInfoProblemPrinter(String textFromUser, TransmittedData
+            transmittedData) throws
             Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
@@ -175,7 +198,8 @@ public class FaqLogic {
         return messageToUser;
     }
 
-    public SendMessage processWaitingSecondInfoProblemPrinter(String textFromUser, TransmittedData transmittedData) throws
+    public SendMessage processWaitingSecondInfoProblemPrinter(String textFromUser, TransmittedData
+            transmittedData) throws
             Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
@@ -204,21 +228,22 @@ public class FaqLogic {
 
         messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
-            if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
-                transmittedData.setState(State.WaitingFirstInfoProblemProjector);
-            } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
-                transmittedData.setState(State.WaitingSecondInfoProblemProjector);
-            } else if (textFromUser.equals(InlineButtonsStorage.Third.getCallBackData())) {
-                transmittedData.setState(State.WaitingThirdInfoProblemProjector);
-            } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
-                transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
-            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-                transmittedData.setState(State.WaitingCommandStart);
-            }
-            return messageToUser;
-}
+        if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
+            transmittedData.setState(State.WaitingFirstInfoProblemProjector);
+        } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
+            transmittedData.setState(State.WaitingSecondInfoProblemProjector);
+        } else if (textFromUser.equals(InlineButtonsStorage.Third.getCallBackData())) {
+            transmittedData.setState(State.WaitingThirdInfoProblemProjector);
+        } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
+            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+            transmittedData.setState(State.WaitingCommandStart);
+        }
+        return messageToUser;
+    }
 
-    public SendMessage processWaitingFirstInfoProblemProjector(String textFromUser, TransmittedData transmittedData) throws
+    public SendMessage processWaitingFirstInfoProblemProjector(String textFromUser, TransmittedData
+            transmittedData) throws
             Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
@@ -259,7 +284,8 @@ public class FaqLogic {
         return messageToUser;
     }
 
-    public SendMessage processWaitingThirdInfoProblemProjector(String textFromUser, TransmittedData transmittedData) throws
+    public SendMessage processWaitingThirdInfoProblemProjector(String textFromUser, TransmittedData
+            transmittedData) throws
             Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());

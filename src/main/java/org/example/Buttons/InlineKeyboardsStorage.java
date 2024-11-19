@@ -130,7 +130,7 @@ public class InlineKeyboardsStorage {
         return inlineKeyboardMarkup;
     }
 
-    public static InlineKeyboardMarkup getProblemTwoFoursButtonsKeyboard() {
+    public static InlineKeyboardMarkup getProblemFoursButtonsKeyboard() {
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
 
         List<InlineKeyboardButton> row = null;
