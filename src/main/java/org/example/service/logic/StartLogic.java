@@ -39,9 +39,10 @@ public class StartLogic {
 
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
 
-            //transmittedData.setState(State.WaitingFirstInfoProblemComputer);
-            //transmittedData.setState(State.WaitingViewProblemPrinter);
-//            transmittedData.setState(State.WaitingViewProblemProjector);
+            /*transmittedData.setState(State.WaitingViewProblemComputer);
+            transmittedData.setState(State.WaitingViewProblemPrinter);
+            transmittedData.setState(State.WaitingViewProblemProjector);*/
+
             return messageToUser;
 
         } else {
@@ -51,7 +52,7 @@ public class StartLogic {
 
                 messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
-                if(textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())){
+                if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())){
                     transmittedData.setState(State.WaitingCommandStart);
                 }
 
@@ -63,7 +64,7 @@ public class StartLogic {
 
                 messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFoursButtonsKeyboard());
 
-                if(textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())){
+                if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())){
                     transmittedData.setState(State.WaitingCommandStart);
                 }
 
@@ -75,15 +76,20 @@ public class StartLogic {
 
                 messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
-                if(textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())){
-                    transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+                if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())){
+                    transmittedData.setState(State.WaitingCommandStart);
                 }
 
                 return messageToUser;
             }
             return messageToUser;
 
-        /*if (textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
+        }
+    }
+}
+
+
+/*if (textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
             transmittedData.setState(State.WaitingViewProblemComputer);
         } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
             transmittedData.setState(State.WaitingViewProblemPrinter);
@@ -92,6 +98,3 @@ public class StartLogic {
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
             transmittedData.setState(State.WaitingCommandStart);
         }*/
-        }
-    }
-}
