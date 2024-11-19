@@ -77,6 +77,7 @@ public class StartLogic {
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFoursButtonsKeyboard());
 
             return messageToUser;
+
         } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
 
             messageToUser.setText("Список проблем: \n1. Не выводится изображение \n2. Проектор не включается \n3. Слишком тусклое изображение");
@@ -86,6 +87,7 @@ public class StartLogic {
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
             return messageToUser;
+
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())){
 
             messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
@@ -93,6 +95,7 @@ public class StartLogic {
             transmittedData.setState(State.WaitingCommandStart);
 
             return messageToUser;
+
         }
         return null;
     }
