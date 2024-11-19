@@ -51,25 +51,37 @@ public class StartLogic {
 
                 messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
+                if(textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())){
+                    transmittedData.setState(State.WaitingCommandStart);
+                }
+
                 return messageToUser;
+
             } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
                 messageToUser.setText("Список проблем: \n1. Не подключается к компьютеру \n2. Замятие бумаги");
                 transmittedData.setState(State.WaitingViewProblemPrinter);
 
                 messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFoursButtonsKeyboard());
 
+                if(textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())){
+                    transmittedData.setState(State.WaitingCommandStart);
+                }
+
                 return messageToUser;
+
             } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
-                messageToUser.setText("проектор");
+                messageToUser.setText("Список проблем: \n1. Не выводится изображение \n2. Проектор не включается. \n3. Слишком тусклое изображение");
                 transmittedData.setState(State.WaitingViewProblemProjector);
 
-            } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
-                transmittedData.setState(State.WaitingCommandStart);
-            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-                transmittedData.setState(State.WaitingCommandStart);
+                messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
+
+                if(textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())){
+                    transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+                }
+
+                return messageToUser;
             }
-
-
+            return messageToUser;
 
         /*if (textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
             transmittedData.setState(State.WaitingViewProblemComputer);
@@ -80,8 +92,6 @@ public class StartLogic {
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
             transmittedData.setState(State.WaitingCommandStart);
         }*/
-
-            return messageToUser;
         }
     }
 }

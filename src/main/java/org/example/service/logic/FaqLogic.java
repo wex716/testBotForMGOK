@@ -161,7 +161,7 @@ public class FaqLogic {
         messageToUser.setChatId(transmittedData.getChatId());
         messageToUser.setText("Список проблем: \n1. Не подключается к компьютеру \n2. Замятие бумаги");
 
-        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFoursButtonsKeyboard());
 
         if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
 
@@ -199,7 +199,7 @@ public class FaqLogic {
         return messageToUser;
     }
 
-    public SendMessage processWaitingFirstInfoProblemPrinter(String textFromUser, TransmittedData
+    /*public SendMessage processWaitingFirstInfoProblemPrinter(String textFromUser, TransmittedData
             transmittedData) throws
             Exception {
         SendMessage messageToUser = new SendMessage();
@@ -241,7 +241,7 @@ public class FaqLogic {
             messageToUser.setText("Вы вернулись в главное меню...");
         }
         return messageToUser;
-    }
+    }*/
 
     public SendMessage processWaitingViewProblemProjector(String textFromUser, TransmittedData transmittedData) throws
             Exception {
@@ -253,20 +253,50 @@ public class FaqLogic {
         messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
         if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
-            transmittedData.setState(State.WaitingFirstInfoProblemProjector);
+
+            messageToUser.setText("1. Проверьте, включен ли проектор/интерактивная доска;\n" +
+                    "2. Проверьте кабель вывода изображения;\n" +
+                    "3. На компьютере нажмите комбинацию клавиш WIN + P и в открывшейся панели выберите \"Повторяющийся\".\n");
+
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+            if ((textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()))) {
+                transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+                transmittedData.setState(State.WaitingCommandStart);
+            }
+
         } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
-            transmittedData.setState(State.WaitingSecondInfoProblemProjector);
+
+            messageToUser.setText("1. Проверьте кабель питания, вставлен ли он в розетку;\n" +
+                    "2. Проверьте рубильник в щитке:\n" +
+                    "2.1 Если включен, но при этом нет электричества, обратитесь к заведующему хозяйству по зданию.\n");
+
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+            if ((textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()))) {
+                transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+                transmittedData.setState(State.WaitingCommandStart);
+            }
+
         } else if (textFromUser.equals(InlineButtonsStorage.Third.getCallBackData())) {
-            transmittedData.setState(State.WaitingThirdInfoProblemProjector);
-        } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
-        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-            transmittedData.setState(State.WaitingCommandStart);
+
+            messageToUser.setText("1. Попробуйте выключить свет в кабинете;\n" +
+                    "2. Возьмите пульт и перейдите в настройки проектора, затем перейдите во вкладку \"Изображение\" и измените уровень яркости.\n");
+
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+            if ((textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()))) {
+                transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+                transmittedData.setState(State.WaitingCommandStart);
+            }
         }
         return messageToUser;
     }
 
-    public SendMessage processWaitingFirstInfoProblemProjector(String textFromUser, TransmittedData
+    /*public SendMessage processWaitingFirstInfoProblemProjector(String textFromUser, TransmittedData
             transmittedData) throws
             Exception {
         SendMessage messageToUser = new SendMessage();
@@ -326,5 +356,5 @@ public class FaqLogic {
             messageToUser.setText("Вы вернулись в главное меню...");
         }
         return messageToUser;
-    }
+    }*/
 }
