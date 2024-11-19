@@ -38,6 +38,8 @@ public class FaqLogic {
                 transmittedData.setState(State.WaitingCommandStart);
             }
 
+            return messageToUser;
+
         } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
 
             messageToUser.setText("1. Проверьте кабель питания (подключен ли он к компьютеру и вставлена ли вилка в розетку);\n" +
@@ -51,6 +53,8 @@ public class FaqLogic {
             } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
                 transmittedData.setState(State.WaitingCommandStart);
             }
+
+            return messageToUser;
 
         } else if (textFromUser.equals(InlineButtonsStorage.Third.getCallBackData())) {
 
@@ -74,7 +78,10 @@ public class FaqLogic {
             } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
                 transmittedData.setState(State.WaitingCommandStart);
             }
+
+            return messageToUser;
         }
+
         return messageToUser;
     }
 
@@ -181,6 +188,8 @@ public class FaqLogic {
                 transmittedData.setState(State.WaitingCommandStart);
             }
 
+            return messageToUser;
+
         } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
 
             messageToUser.setText("1. При замятии бумаги посмотрите на панель управления принтера и следуйте инструкции;\n" +
@@ -194,8 +203,10 @@ public class FaqLogic {
             } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
                 transmittedData.setState(State.WaitingCommandStart);
             }
+            return messageToUser;
 
         }
+
         return messageToUser;
     }
 
@@ -266,6 +277,8 @@ public class FaqLogic {
                 transmittedData.setState(State.WaitingCommandStart);
             }
 
+            return messageToUser;
+
         } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
 
             messageToUser.setText("1. Проверьте кабель питания, вставлен ли он в розетку;\n" +
@@ -280,6 +293,8 @@ public class FaqLogic {
                 transmittedData.setState(State.WaitingCommandStart);
             }
 
+            return messageToUser;
+
         } else if (textFromUser.equals(InlineButtonsStorage.Third.getCallBackData())) {
 
             messageToUser.setText("1. Попробуйте выключить свет в кабинете;\n" +
@@ -292,6 +307,8 @@ public class FaqLogic {
             } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
                 transmittedData.setState(State.WaitingCommandStart);
             }
+
+            return messageToUser;
         }
         return messageToUser;
     }
