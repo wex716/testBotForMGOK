@@ -23,11 +23,12 @@ public class StartLogic {
 
         return messageToUser;
     }
-    public SendMessage processWaitingQuestionsOrApplicationOrHistory(String textFromUser, TransmittedData transmittedData){
+
+    public SendMessage processWaitingQuestionsOrApplicationOrHistory(String textFromUser, TransmittedData transmittedData) {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
-        if (!textFromUser.equals(InlineButtonsStorage.ShowQuestionsStart.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.SubmitApplication.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.SubmitHistory.getCallBackData()) ) {
+        if (!textFromUser.equals(InlineButtonsStorage.ShowQuestionsStart.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.SubmitApplication.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.SubmitHistory.getCallBackData())) {
             messageToUser.setText("Ошибка. Нажмите на кнопку.");
 
             return messageToUser;
@@ -47,7 +48,7 @@ public class StartLogic {
         return null;
     }
 
-    public SendMessage processWaitingQuestions(String textFromUser, TransmittedData transmittedData){
+    public SendMessage processWaitingQuestions(String textFromUser, TransmittedData transmittedData) {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
@@ -61,81 +62,33 @@ public class StartLogic {
 
             messageToUser.setText("Список проблем: \n1. Отсутствует подключение к сети Интернет \n2. Не включается компьютер \n3. Проблема с монитором.");
 
-                transmittedData.setState(State.WaitingViewProblemComputer);
+            transmittedData.setState(State.WaitingViewProblemComputer);
 
-                messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
             return messageToUser;
 
+        } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
+
+            messageToUser.setText("Список проблем: \n1. Не подключается к компьютеру \n2. Замятие бумаги");
+
+            transmittedData.setState(State.WaitingViewProblemPrinter);
+
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFoursButtonsKeyboard());
+
+            return messageToUser;
+        } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
+
+            messageToUser.setText("Список проблем: \n1. Не выводится изображение \n2. Проектор не включается \n3. Слишком тусклое изображение");
+
+            transmittedData.setState(State.WaitingViewProblemProjector);
+
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
+
+            return messageToUser;
         }
 
         return null;
     }
 
-//    public SendMessage processWaitingQuestionsOrApplicationOrHistory(String textFromUser, TransmittedData transmittedData) throws Exception {
-//        SendMessage messageToUser = new SendMessage();
-//        messageToUser.setChatId(transmittedData.getChatId());
-//
-//        if (!textFromUser.equals(InlineButtonsStorage.ShowQuestionsStart.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-//            messageToUser.setText("Ошибка. Нажмите на кнопку.");
-//
-//            return messageToUser;
-//
-//        }
-//
-//        if (textFromUser.equals(InlineButtonsStorage.ShowQuestionsStart.getCallBackData())) {
-//            messageToUser.setText("Выберите, с чем возникла проблема");
-//
-//            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
-//
-//            return messageToUser;
-//
-//        } else {
-//            if (textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
-//                messageToUser.setText("Список проблем: \n1. Отсутствует подключение к сети Интернет \n2. Не включается компьютер \n3. Проблема с монитором.");
-//                transmittedData.setState(State.WaitingViewProblemComputer);
-//
-//                messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
-//
-//                return messageToUser;
-//
-//            } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
-//                messageToUser.setText("Список проблем: \n1. Не подключается к компьютеру \n2. Замятие бумаги");
-//                transmittedData.setState(State.WaitingViewProblemPrinter);
-//
-//                messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFoursButtonsKeyboard());
-//
-//                return messageToUser;
-//
-//            } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
-//                messageToUser.setText("Список проблем: \n1. Не выводится изображение \n2. Проектор не включается. \n3. Слишком тусклое изображение");
-//                transmittedData.setState(State.WaitingViewProblemProjector);
-//
-//                messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
-//
-//                return messageToUser;
-//
-//            } else if(textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())){
-//                messageToUser.setText("Вы вернулись в главное меню");
-//                transmittedData.setState(State.WaitingCommandStart);
-//            }
-//
-//            return messageToUser;
-//
-//        }
-//    }
 }
-
-            /*transmittedData.setState(State.WaitingViewProblemComputer);
-            transmittedData.setState(State.WaitingViewProblemPrinter);
-            transmittedData.setState(State.WaitingViewProblemProjector);*/
-
-        /*if (textFromUser.equals(InlineButtonsStorage.ViewProblemComputer.getCallBackData())) {
-            transmittedData.setState(State.WaitingViewProblemComputer);
-        } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemPrinter.getCallBackData())) {
-            transmittedData.setState(State.WaitingViewProblemPrinter);
-        } else if (textFromUser.equals(InlineButtonsStorage.ViewProblemProjector.getCallBackData())) {
-            transmittedData.setState(State.WaitingViewProblemProjector);
-        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-            transmittedData.setState(State.WaitingCommandStart);
-        }*/
