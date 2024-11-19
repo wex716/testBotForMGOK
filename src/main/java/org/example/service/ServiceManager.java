@@ -32,6 +32,8 @@ public class ServiceManager {
 
         methods.put(State.WaitingQuestionsOrApplicationOrHistory, startLogic::processWaitingQuestionsOrApplicationOrHistory);
 
+        methods.put(State.WaitingQuestions, startLogic::processWaitingQuestions);
+
         //просмотр комп
         methods.put(State.WaitingViewProblemComputer, faqLogic::processWaitingViewProblemComputer);
 

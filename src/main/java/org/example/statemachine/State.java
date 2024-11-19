@@ -5,6 +5,8 @@ public class State {
     public final static String WaitingCommandStart = "WaitingCommandStart";
     public final static String WaitingQuestionsOrApplicationOrHistory = "WaitingQuestionsOrApplicationOrHistory";
 
+    public final static String WaitingQuestions = "WaitingQuestions";
+
     public final static String WaitingViewProblemComputer = "WaitingViewProblemComputer";
 
     /*public final static String WaitingFirstInfoProblemComputer = "WaitingFirstInfoProblemComputer";
