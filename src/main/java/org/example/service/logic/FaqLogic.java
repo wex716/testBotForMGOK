@@ -161,16 +161,40 @@ public class FaqLogic {
         messageToUser.setChatId(transmittedData.getChatId());
         messageToUser.setText("Список проблем: \n1. Не подключается к компьютеру \n2. Замятие бумаги");
 
-        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFoursButtonsKeyboard());
+        messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
         if (textFromUser.equals(InlineButtonsStorage.First.getCallBackData())) {
-            transmittedData.setState(State.WaitingFirstInfoProblemPrinter);
+
+            messageToUser.setText("Не подключается к компьютеру\n" +
+                    "При проблемах с подключением принтера:\n" +
+                    "1. Перейдите в настройки Windows;\n" +
+                    "2. Зайдите в параметры устройств и выберите категорию с принтерами\n" +
+                    "3. Если в списке подключенных принтеров нет вашего, то запустите поиск\n" +
+                    "3.1. В списке найденных устройств выбери ваш принтер и ожидайте подключения;\n" +
+                    "4. Если Ваш принтер подключен к компьютеру, то удалите его и подключите заново.\n.");
+
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+            if ((textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()))) {
+                transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+                transmittedData.setState(State.WaitingCommandStart);
+            }
+
         } else if (textFromUser.equals(InlineButtonsStorage.Second.getCallBackData())) {
-            transmittedData.setState(State.WaitingSecondInfoProblemPrinter);
-        } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
-        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-            transmittedData.setState(State.WaitingCommandStart);
+
+            messageToUser.setText("1. При замятии бумаги посмотрите на панель управления принтера и следуйте инструкции;\n" +
+                    "2. Откройте заднюю панель принтера;\n" +
+                    "3. Вытащите замятый лист и закройте панель;\n");
+
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
+
+            if ((textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData()))) {
+                transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+                transmittedData.setState(State.WaitingCommandStart);
+            }
+
         }
         return messageToUser;
     }
