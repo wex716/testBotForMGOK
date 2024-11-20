@@ -86,9 +86,9 @@ public class FaqLogic {
 
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
 
-            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
-
-            transmittedData.setState(State.WaitingCommandStart);
+            messageToUser.setText("Выберите то что вы хотите");
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
+            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
 
             return messageToUser;
         }
@@ -110,21 +110,17 @@ public class FaqLogic {
 
         if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
 
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            //transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
 
-            messageToUser.setText("Выберите, с чем возникла проблема");
+            messageToUser.setText("Список проблем: \n1. Отсутствует подключение к сети Интернет \n2. Не включается компьютер \n3. Проблема с монитором.");
 
-            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
+            transmittedData.setState(State.WaitingViewProblemComputer);
 
-            transmittedData.setState(State.WaitingQuestions);
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
             return messageToUser;
 
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-
-            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
-
-            transmittedData.setState(State.WaitingCommandStart);
 
             messageToUser.setText("Выберите то что вы хотите");
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
@@ -149,21 +145,15 @@ public class FaqLogic {
 
         if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
 
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            messageToUser.setText("Список проблем: \n1. Отсутствует подключение к сети Интернет \n2. Не включается компьютер \n3. Проблема с монитором.");
 
-            messageToUser.setText("Выберите, с чем возникла проблема");
+            transmittedData.setState(State.WaitingViewProblemComputer);
 
-            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
-
-            transmittedData.setState(State.WaitingQuestions);
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
             return messageToUser;
 
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-
-            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
-
-            transmittedData.setState(State.WaitingCommandStart);
 
             messageToUser.setText("Выберите то что вы хотите");
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
@@ -187,21 +177,15 @@ public class FaqLogic {
 
         if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
 
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            messageToUser.setText("Список проблем: \n1. Отсутствует подключение к сети Интернет \n2. Не включается компьютер \n3. Проблема с монитором.");
 
-            messageToUser.setText("Выберите, с чем возникла проблема");
+            transmittedData.setState(State.WaitingViewProblemComputer);
 
-            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
-
-            transmittedData.setState(State.WaitingQuestions);
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
             return messageToUser;
 
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-
-            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
-
-            transmittedData.setState(State.WaitingCommandStart);
 
             messageToUser.setText("Выберите то что вы хотите");
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
@@ -264,9 +248,9 @@ public class FaqLogic {
 
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
 
-            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
-
-            transmittedData.setState(State.WaitingCommandStart);
+            messageToUser.setText("Выберите то что вы хотите");
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
+            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
 
             return messageToUser;
         }
@@ -288,21 +272,15 @@ public class FaqLogic {
 
         if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
 
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            messageToUser.setText("Список проблем: \n1. Не подключается к компьютеру \n2. Замятие бумаги");
 
-            messageToUser.setText("Выберите, с чем возникла проблема");
+            transmittedData.setState(State.WaitingViewProblemPrinter);
 
-            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
-
-            transmittedData.setState(State.WaitingQuestions);
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFoursButtonsKeyboard());
 
             return messageToUser;
 
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-
-            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
-
-            transmittedData.setState(State.WaitingCommandStart);
 
             messageToUser.setText("Выберите то что вы хотите");
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
@@ -328,21 +306,15 @@ public class FaqLogic {
 
         else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
 
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            messageToUser.setText("Список проблем: \n1. Не подключается к компьютеру \n2. Замятие бумаги");
 
-            messageToUser.setText("Выберите, с чем возникла проблема");
+            transmittedData.setState(State.WaitingViewProblemPrinter);
 
-            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
-
-            transmittedData.setState(State.WaitingQuestions);
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFoursButtonsKeyboard());
 
             return messageToUser;
 
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-
-            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
-
-            transmittedData.setState(State.WaitingCommandStart);
 
             messageToUser.setText("Выберите то что вы хотите");
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
@@ -414,9 +386,9 @@ public class FaqLogic {
 
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
 
-            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
-
-            transmittedData.setState(State.WaitingCommandStart);
+            messageToUser.setText("Выберите то что вы хотите");
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
+            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
 
             return messageToUser;
         }
@@ -438,21 +410,15 @@ public class FaqLogic {
 
         if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
 
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            messageToUser.setText("Список проблем: \n1. Не выводится изображение \n2. Проектор не включается \n3. Слишком тусклое изображение");
 
-            messageToUser.setText("Выберите, с чем возникла проблема");
+            transmittedData.setState(State.WaitingViewProblemProjector);
 
-            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
-
-            transmittedData.setState(State.WaitingQuestions);
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
             return messageToUser;
 
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-
-            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
-
-            transmittedData.setState(State.WaitingCommandStart);
 
             messageToUser.setText("Выберите то что вы хотите");
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
@@ -478,21 +444,15 @@ public class FaqLogic {
 
         if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
 
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            messageToUser.setText("Список проблем: \n1. Не выводится изображение \n2. Проектор не включается \n3. Слишком тусклое изображение");
 
-            messageToUser.setText("Выберите, с чем возникла проблема");
+            transmittedData.setState(State.WaitingViewProblemProjector);
 
-            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
-
-            transmittedData.setState(State.WaitingQuestions);
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
             return messageToUser;
 
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-
-            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
-
-            transmittedData.setState(State.WaitingCommandStart);
 
             messageToUser.setText("Выберите то что вы хотите");
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
@@ -519,28 +479,21 @@ public class FaqLogic {
 
         if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
 
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            messageToUser.setText("Список проблем: \n1. Не выводится изображение \n2. Проектор не включается \n3. Слишком тусклое изображение");
 
-            messageToUser.setText("Выберите, с чем возникла проблема");
+            transmittedData.setState(State.WaitingViewProblemProjector);
 
-            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemSystemShowKeyboard());
-
-            transmittedData.setState(State.WaitingQuestions);
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getProblemFiveButtonsKeyboard());
 
             return messageToUser;
 
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
-
-            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
-
-            transmittedData.setState(State.WaitingCommandStart);
 
             messageToUser.setText("Выберите то что вы хотите");
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
             transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
 
             return messageToUser;
-
         }
         return messageToUser;
     }

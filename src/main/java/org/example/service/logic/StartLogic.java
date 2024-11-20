@@ -90,9 +90,9 @@ public class StartLogic {
 
         } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())){
 
-            messageToUser.setText("Здравстуйте! Это теханическая поддержка МГОК.\n \nДанный бот призван упростить взаимодействие преподавателей и Сис админов\n \nБудем рады помочь решить проблему, которая у вас возникла\n \nДля того, чтобы бот начал работу, нажмите /start");
-
-            transmittedData.setState(State.WaitingCommandStart);
+            messageToUser.setText("Выберите то что вы хотите");
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
+            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
 
             return messageToUser;
 
