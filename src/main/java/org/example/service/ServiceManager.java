@@ -34,25 +34,40 @@ public class ServiceManager {
 
         methods.put(State.WaitingQuestions, startLogic::processWaitingQuestions);
 
-        //просмотр комп
+        methods.put(State.WaitingSubmitApplication, startLogic::processWaitingQuestionsOrApplicationOrHistory);
+        methods.put(State.WaitingApplication, startLogic::processWaitingApplication);
+
+        methods.put(State.WaitingInputCabinetNumber, applicationLogic::processWaitingInputCabinetNumber);
+        methods.put(State.WaitingInputFullName, applicationLogic::processWaitingInputFullName);
+        methods.put(State.WaitingInputNumberPhone, applicationLogic::processWaitingInputNumberTelephone);
+        methods.put(State.WaitingDescriptionProblem, applicationLogic::processWaitingDescriptionProblem);
+        methods.put(State.WaitingAddPhoto, applicationLogic::processWaitingAddPhoto);
+
+
+        //region просмотр комп
         methods.put(State.WaitingViewProblemComputer, faqLogic::processWaitingViewProblemComputer);
 
         methods.put(State.WaitingFirstInfoProblemComputer, faqLogic::processWaitingFirstInfoProblemComputer);
         methods.put(State.WaitingSecondInfoProblemComputer, faqLogic::processWaitingSecondInfoProblemComputer);
         methods.put(State.WaitingThirdInfoProblemComputer, faqLogic::processWaitingThirdInfoProblemComputer);
+//endregion
 
-        // принтер
+        //region принтер
         methods.put(State.WaitingViewProblemPrinter, faqLogic::processWaitingViewProblemPrinter);
-            methods.put(State.WaitingFirstInfoProblemPrinter, faqLogic::processWaitingFirstInfoProblemPrinter);
-            methods.put(State.WaitingSecondInfoProblemPrinter, faqLogic::processWaitingSecondInfoProblemPrinter);
+        methods.put(State.WaitingFirstInfoProblemPrinter, faqLogic::processWaitingFirstInfoProblemPrinter);
+        methods.put(State.WaitingSecondInfoProblemPrinter, faqLogic::processWaitingSecondInfoProblemPrinter);
+//endregion
 
-
-        //проектор
+        //region проектор
         methods.put(State.WaitingViewProblemProjector, faqLogic::processWaitingViewProblemProjector);
 
         methods.put(State.WaitingFirstInfoProblemProjector, faqLogic::processWaitingFirstInfoProblemProjector);
         methods.put(State.WaitingSecondInfoProblemProjector, faqLogic::processWaitingSecondInfoProblemProjector);
         methods.put(State.WaitingThirdInfoProblemProjector, faqLogic::processWaitingThirdInfoProblemProjector);
+//endregion
+
+        //заявка
+
     }
 
     public SendMessage callLogicMethod(String textFromUser, TransmittedData transmittedData) throws Exception {

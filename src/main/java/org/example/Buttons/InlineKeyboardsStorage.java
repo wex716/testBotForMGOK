@@ -196,4 +196,68 @@ public class InlineKeyboardsStorage {
 
         return inlineKeyboardMarkup;
     }
+
+    public static InlineKeyboardMarkup getAddressKeyboard() {
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row = null;
+        InlineKeyboardButton button = null;
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.FirstAddressPlace.getTitle());
+        button.setCallbackData(InlineButtonsStorage.FiveAddressPlace.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.SecondAddressPlace.getTitle());
+        button.setCallbackData(InlineButtonsStorage.SecondAddressPlace.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.ThirdAddressPlace.getTitle());
+        button.setCallbackData(InlineButtonsStorage.ThirdAddressPlace.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.FourAddressPlace.getTitle());
+        button.setCallbackData(InlineButtonsStorage.FourAddressPlace.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.FiveAddressPlace.getTitle());
+        button.setCallbackData(InlineButtonsStorage.FiveAddressPlace.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.SixAddressPlace.getTitle());
+        button.setCallbackData(InlineButtonsStorage.SixAddressPlace.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.BackToMenu.getTitle());
+        button.setCallbackData(InlineButtonsStorage.BackToMenu.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+
+
+
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        inlineKeyboardMarkup.setKeyboard(keyboard);
+
+        return inlineKeyboardMarkup;
+    }
 }

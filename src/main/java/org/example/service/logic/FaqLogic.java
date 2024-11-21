@@ -9,6 +9,8 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 public class FaqLogic {
 
+    //region описание проблем с компьютером
+
     public SendMessage processWaitingViewProblemComputer(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
@@ -94,8 +96,9 @@ public class FaqLogic {
         }
         return messageToUser;
     }
+    //endregion
 
-
+    //region обработчик нажатия на кнопки у компьютера
     public SendMessage processWaitingFirstInfoProblemComputer(String textFromUser, TransmittedData transmittedData) throws
             Exception {
         SendMessage messageToUser = new SendMessage();
@@ -196,7 +199,9 @@ public class FaqLogic {
         }
         return messageToUser;
     }
+    //endregion
 
+    //region описание проблем с принтером
     public SendMessage processWaitingViewProblemPrinter(String textFromUser, TransmittedData transmittedData) throws
             Exception {
         SendMessage messageToUser = new SendMessage();
@@ -257,7 +262,9 @@ public class FaqLogic {
 
         return messageToUser;
     }
+    //endregion
 
+    //region обработчик нажатия на кнокпи у принтера
     public SendMessage processWaitingFirstInfoProblemPrinter(String textFromUser, TransmittedData
             transmittedData) throws
             Exception {
@@ -325,7 +332,9 @@ public class FaqLogic {
         }
         return messageToUser;
     }
+    //endregion
 
+    //region описание проблем с проектором
     public SendMessage processWaitingViewProblemProjector(String textFromUser, TransmittedData transmittedData) throws
             Exception {
         SendMessage messageToUser = new SendMessage();
@@ -395,7 +404,9 @@ public class FaqLogic {
 
         return messageToUser;
     }
+    //endregion
 
+    //region обработчки нажатия на кнопки у проетора
     public SendMessage processWaitingFirstInfoProblemProjector(String textFromUser, TransmittedData
             transmittedData) throws
             Exception {
@@ -497,4 +508,5 @@ public class FaqLogic {
         }
         return messageToUser;
     }
+    //endregion
 }

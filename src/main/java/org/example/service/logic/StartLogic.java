@@ -8,6 +8,8 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 
 public class StartLogic {
+
+    //region нажатие на кнопку старт
     public SendMessage processWaitingCommandStart(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
@@ -23,6 +25,9 @@ public class StartLogic {
 
         return messageToUser;
     }
+    //endregion
+
+    //region проверка на нажатие кнопки (частые вопросы, оставить заявку, история заявок)
 
     public SendMessage processWaitingQuestionsOrApplicationOrHistory(String textFromUser, TransmittedData transmittedData) {
         SendMessage messageToUser = new SendMessage();
@@ -43,10 +48,21 @@ public class StartLogic {
 
             return messageToUser;
 
+        } else if (textFromUser.equals(InlineButtonsStorage.SubmitApplication.getCallBackData())) {
+
+            transmittedData.setState(State.WaitingApplication);
+            messageToUser.setText("Пожалуйста, выберите адрес площадки.");
+
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getAddressKeyboard());
+
+            return messageToUser;
         }
 
         return null;
     }
+    //endregion
+
+    //region вопросы (компьютер, принтер, проектор)
 
     public SendMessage processWaitingQuestions(String textFromUser, TransmittedData transmittedData) {
         SendMessage messageToUser = new SendMessage();
@@ -88,7 +104,7 @@ public class StartLogic {
 
             return messageToUser;
 
-        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())){
+        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
 
             messageToUser.setText("Выберите то что вы хотите");
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
@@ -99,5 +115,67 @@ public class StartLogic {
         }
         return null;
     }
+    //endregion
+
+    //region обработка нажатия кнопок адресов при нажатие на кнопку "оставить запрос"
+    public SendMessage processWaitingApplication(String textFromUser, TransmittedData transmittedData) {
+        SendMessage messageToUser = new SendMessage();
+        messageToUser.setChatId(transmittedData.getChatId());
+
+        if (!textFromUser.equals(InlineButtonsStorage.FirstAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.SecondAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.ThirdAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.FourAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.FiveAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.SixAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+
+            messageToUser.setText("Ошибка. Нажмите на кнопку.");
+
+            return messageToUser;
+        }
+
+        if (textFromUser.equals(InlineButtonsStorage.FirstAddressPlace.getCallBackData())) {
+
+            messageToUser.setText("Введите номер кабинета");
+            transmittedData.setState(State.WaitingInputCabinetNumber);
+
+            return messageToUser;
+        } else if (textFromUser.equals(InlineButtonsStorage.SecondAddressPlace.getCallBackData())) {
+
+            messageToUser.setText("Введите номер кабинета");
+            transmittedData.setState(State.WaitingInputCabinetNumber);
+
+            return messageToUser;
+        } else if (textFromUser.equals(InlineButtonsStorage.ThirdAddressPlace.getCallBackData())) {
+
+            messageToUser.setText("Введите номер кабинета");
+            transmittedData.setState(State.WaitingInputCabinetNumber);
+
+            return messageToUser;
+        } else if (textFromUser.equals(InlineButtonsStorage.FourAddressPlace.getCallBackData())) {
+
+            messageToUser.setText("Введите номер кабинета");
+            transmittedData.setState(State.WaitingInputCabinetNumber);
+
+            return messageToUser;
+        } else if (textFromUser.equals(InlineButtonsStorage.FiveAddressPlace.getCallBackData())) {
+
+            messageToUser.setText("Введите номер кабинета");
+            transmittedData.setState(State.WaitingInputCabinetNumber);
+
+            return messageToUser;
+        } else if (textFromUser.equals(InlineButtonsStorage.SixAddressPlace.getCallBackData())) {
+
+            messageToUser.setText("Введите номер кабинета");
+            transmittedData.setState(State.WaitingInputCabinetNumber);
+
+            return messageToUser;
+        } else if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+
+            messageToUser.setText("Выберите то что вы хотите");
+            messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());
+            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+
+            return messageToUser;
+        }
+
+        return messageToUser;
+    }
+    //endregion
 
 }
