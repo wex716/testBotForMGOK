@@ -260,4 +260,76 @@ public class InlineKeyboardsStorage {
 
         return inlineKeyboardMarkup;
     }
+
+    public static InlineKeyboardMarkup getQuestionKeyboard() {
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row = null;
+        InlineKeyboardButton button = null;
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.YesSendPhoto.getTitle());
+        button.setCallbackData(InlineButtonsStorage.YesSendPhoto.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.NoSendPhoto.getTitle());
+        button.setCallbackData(InlineButtonsStorage.NoSendPhoto.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        inlineKeyboardMarkup.setKeyboard(keyboard);
+
+        return inlineKeyboardMarkup;
+    }
+
+    public static InlineKeyboardMarkup getVerificationDataKeyboard() {
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row = null;
+        InlineKeyboardButton button = null;
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.SendApplication.getTitle());
+        button.setCallbackData(InlineButtonsStorage.SendApplication.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.CancelApplication.getTitle());
+        button.setCallbackData(InlineButtonsStorage.CancelApplication.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        inlineKeyboardMarkup.setKeyboard(keyboard);
+
+        return inlineKeyboardMarkup;
+    }
+
+    public static InlineKeyboardMarkup getMenuKeyboard() {
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+
+        List<InlineKeyboardButton> row = null;
+        InlineKeyboardButton button = null;
+
+        row = new ArrayList<>();
+        button = new InlineKeyboardButton();
+        button.setText(InlineButtonsStorage.BackToMenu.getTitle());
+        button.setCallbackData(InlineButtonsStorage.BackToMenu.getCallBackData());
+        row.add(button);
+        keyboard.add(row);
+
+
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        inlineKeyboardMarkup.setKeyboard(keyboard);
+
+        return inlineKeyboardMarkup;
+    }
 }

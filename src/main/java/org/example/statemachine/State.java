@@ -45,7 +45,8 @@ public class State {
     public final static String WaitingInputFullName = "WaitingInputFullName";
     public final static String WaitingInputNumberPhone = "WaitingInputNumberTelephone";
     public final static String WaitingDescriptionProblem = "WaitingDescriptionProblem";
-    public final static String WaitingAddPhoto = "WaitingAddPhoto";
+    public final static String WaitingQuestionAddPhoto = "WaitingAddPhoto";
+    public final static String WaitingPhoto = "WaitingPhoto";
     public final static String WaitingDataVerification = "WaitingDataVerification";
     public final static String WaitingReadApplication = "WaitingReadApplication";
 

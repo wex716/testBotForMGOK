@@ -41,7 +41,10 @@ public class ServiceManager {
         methods.put(State.WaitingInputFullName, applicationLogic::processWaitingInputFullName);
         methods.put(State.WaitingInputNumberPhone, applicationLogic::processWaitingInputNumberTelephone);
         methods.put(State.WaitingDescriptionProblem, applicationLogic::processWaitingDescriptionProblem);
-        methods.put(State.WaitingAddPhoto, applicationLogic::processWaitingAddPhoto);
+        methods.put(State.WaitingQuestionAddPhoto, applicationLogic::processWaitingAddPhoto);
+        methods.put(State.WaitingPhoto, applicationLogic::processWaitingPhoto);
+        methods.put(State.WaitingDataVerification, applicationLogic::processWaitingDataVerification);
+        methods.put(State.WaitingReadApplication, applicationLogic::processWaitingReadApplication);
 
 
         //region просмотр комп
