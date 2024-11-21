@@ -6,6 +6,8 @@ import org.example.statemachine.DataStorage;
 import org.example.statemachine.State;
 import org.example.statemachine.TransmittedData;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 
 public class ApplicationLogic {
 
@@ -13,45 +15,25 @@ public class ApplicationLogic {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
-        int minLength = 3;
-        int maxLength = 6;
-        String cleanedNumber = textFromUser.replaceAll("[^0-9]", "");
-
-        if (cleanedNumber.isEmpty()) {
-            messageToUser.setText("Ошибка ввода номера кабинета. Введите целое число.");
+        if (textFromUser.isEmpty() || textFromUser.length() > 1000) {
+            messageToUser.setText("Ошибка ввода номера кабинета. Повторите ввод.");
             return messageToUser;
         }
 
-        if (cleanedNumber.length() < minLength || cleanedNumber.length() > maxLength) {
-            messageToUser.setText("Ошибка ввода номера кабинета. Номер должен содержать от " + minLength + " до " + maxLength + " цифр.");
-            return messageToUser;
-        }
 
-        try {
-            int cabinetNumber = Integer.parseInt(cleanedNumber);
-            transmittedData.getDataStorage().add("cabinetNumber", cabinetNumber);
-            messageToUser.setText("Номер кабинета успешно записан. Теперь введите ФИО.");
-            transmittedData.setState(State.WaitingInputFullName);
-            return messageToUser;
-        } catch (NumberFormatException e) {
-            messageToUser.setText("Ошибка ввода номера кабинета. Пожалуйста, введите целое число.");
-            return messageToUser;
-        }
+        transmittedData.getDataStorage().add("cabinetNumber", textFromUser);
+        messageToUser.setText("Номер кабинета успешно записан. Теперь введите ФИО.");
+        transmittedData.setState(State.WaitingInputFullName);
+        return messageToUser;
     }
-
 
     public SendMessage processWaitingInputFullName(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
 
-        if (textFromUser.isEmpty() || textFromUser.length() > 50) {
+        if (textFromUser.isEmpty() || textFromUser.length() > 100) {
             messageToUser.setText("Ошибка ввода ФИО. Повторите ввод");
-            return messageToUser;
-        }
-
-        if (!textFromUser.matches("[А-Яа-яЁё\\-\\']+")) {
-            messageToUser.setText("Ошибка ввода ФИО. Введите ФИО на русском языке (только кириллица, дефисы и апострофы).");
             return messageToUser;
         }
 
@@ -67,22 +49,17 @@ public class ApplicationLogic {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
-
-        String phoneNumber = textFromUser.replaceAll("[^0-9]", "");
-        if (phoneNumber.isEmpty()) {
+        if (textFromUser.isEmpty()) {
             messageToUser.setText("Ошибка ввода номера телефона. Введите номер телефона");
             return messageToUser;
         }
 
-        int minLength = 10;
-        int maxLength = 12;
-
-        if (phoneNumber.length() <= minLength || phoneNumber.length() > maxLength) {
-            messageToUser.setText("Ошибка ввода номера телефона. Номер должен содержать от " + minLength + " до " + maxLength);
+        if (textFromUser.length() < 9) {
+            messageToUser.setText("Ошибка ввода номера телефона. Номер должен содержать минимум 11 символов");
             return messageToUser;
         }
 
-        transmittedData.getDataStorage().add("phoneNumber", phoneNumber);
+        transmittedData.getDataStorage().add("phoneNumber", textFromUser);
 
         messageToUser.setText("Номер телефона успешно записан. Теперь опишите проблему");
 
@@ -96,10 +73,8 @@ public class ApplicationLogic {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
-        String textRegex = "^[\\w\\s.,!?;:'\"-]+";
-
-        if (textFromUser.isEmpty() || textFromUser.matches(textRegex)) {
-            messageToUser.setText("Ошибка. Пожалуйста, опишите проблему более подробно.");
+        if (textFromUser.isEmpty()) {
+            messageToUser.setText("Ошибка. Не может быть пустое сообщение.");
             return messageToUser;
         }
 
@@ -111,14 +86,12 @@ public class ApplicationLogic {
         return messageToUser;
     }
 
-    public SendMessage processWaitingAddPhoto(String textFromUser, TransmittedData transmittedData) throws Exception {
+    public SendMessage processWaitingQuestionAddPhoto(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
         if (!textFromUser.equals(InlineButtonsStorage.YesSendPhoto.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.NoSendPhoto.getCallBackData())) {
-
             messageToUser.setText("Ошибка. Нажмите на кнопку.");
-
             return messageToUser;
         }
 
@@ -137,6 +110,7 @@ public class ApplicationLogic {
             StringBuilder messageText = new StringBuilder("Проверьте данные\n\n");
 
             //messageText.append("Адрес площадки: ").append(data.get("cabinetNumber")).append("\n"); - тянется с бд
+
             messageText.append("Номер кабинета: ").append(data.get("cabinetNumber")).append("\n");
             messageText.append("ФИО: ").append(data.get("FIO")).append("\n");
             messageText.append("Номер телефона: ").append(data.get("phoneNumber")).append("\n");
@@ -164,6 +138,7 @@ public class ApplicationLogic {
         StringBuilder messageText = new StringBuilder("Проверьте данные\n\n");
 
         //messageText.append("Адрес площадки: ").append(data.get("cabinetNumber")).append("\n"); - тянется с бд
+
         messageText.append("Номер кабинета: ").append(data.get("cabinetNumber")).append("\n");
         messageText.append("ФИО: ").append(data.get("FIO")).append("\n");
         messageText.append("Номер телефона: ").append(data.get("phoneNumber")).append("\n");
@@ -189,7 +164,7 @@ public class ApplicationLogic {
             return messageToUser;
         }
 
-        if(textFromUser.equals(InlineButtonsStorage.SendApplication.getCallBackData())){
+        if (textFromUser.equals(InlineButtonsStorage.SendApplication.getCallBackData())) {
 
             messageToUser.setText("Заявка №222 успешно создана! Вам придет уведомление, когда статус заявки будет изменен"); // тянется с бд
 
@@ -198,7 +173,7 @@ public class ApplicationLogic {
             transmittedData.getDataStorage().clear();
 
             return messageToUser;
-        }else if(textFromUser.equals(InlineButtonsStorage.CancelApplication.getCallBackData())){
+        } else if (textFromUser.equals(InlineButtonsStorage.CancelApplication.getCallBackData())) {
 
 
             transmittedData.setState(State.WaitingApplication);
@@ -215,13 +190,13 @@ public class ApplicationLogic {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
-        if (!textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())){
+        if (!textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
             messageToUser.setText("Ошибка. Нажмите на кнопку.");
 
             return messageToUser;
         }
 
-        if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())){
+        if (textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
 
             messageToUser.setText("Выберите то что вы хотите");
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getStartKeyboard());

@@ -34,8 +34,7 @@ public class TelegramBotHandler extends TelegramLongPollingBot {
                 chatId = update.getCallbackQuery().getMessage().getChatId();
                 messageId = update.getCallbackQuery().getMessage().getMessageId();
                 textFromUser = update.getCallbackQuery().getData();
-            }
-            else if(update.getMessage().hasPhoto()){
+            } else if (update.getMessage().hasPhoto()) {
                 chatId = update.getMessage().getChatId();
                 messageId = update.getMessage().getMessageId();
                 textFromUser = update.getMessage().getText();
@@ -43,6 +42,12 @@ public class TelegramBotHandler extends TelegramLongPollingBot {
 
             SendMessage messageToUser = chatsRouter.route(chatId, textFromUser);
 
+
+            try {
+                sendApiMethod(messageToUser);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
             execute(messageToUser);
         } catch (Exception e) {
 
