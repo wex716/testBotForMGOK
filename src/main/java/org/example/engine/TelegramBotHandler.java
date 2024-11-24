@@ -3,9 +3,14 @@ package org.example.engine;
 import org.example.statemachine.ChatsRouter;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
+import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+import java.util.Comparator;
+import java.util.List;
 
 public class TelegramBotHandler extends TelegramLongPollingBot {
     private String botUsername;
@@ -34,20 +39,12 @@ public class TelegramBotHandler extends TelegramLongPollingBot {
                 chatId = update.getCallbackQuery().getMessage().getChatId();
                 messageId = update.getCallbackQuery().getMessage().getMessageId();
                 textFromUser = update.getCallbackQuery().getData();
-            } else if (update.getMessage().hasPhoto()) {
-                chatId = update.getMessage().getChatId();
-                messageId = update.getMessage().getMessageId();
-                textFromUser = update.getMessage().getText();
+
             }
+
 
             SendMessage messageToUser = chatsRouter.route(chatId, textFromUser);
 
-
-            try {
-                sendApiMethod(messageToUser);
-            } catch (TelegramApiException e) {
-                e.printStackTrace();
-            }
             execute(messageToUser);
         } catch (Exception e) {
 
@@ -64,7 +61,6 @@ public class TelegramBotHandler extends TelegramLongPollingBot {
             }
         }
     }
-
 
     @Override
     public String getBotUsername() {

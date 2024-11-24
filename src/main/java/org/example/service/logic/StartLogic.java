@@ -177,5 +177,4 @@ public class StartLogic {
         return messageToUser;
     }
     //endregion
-
 }

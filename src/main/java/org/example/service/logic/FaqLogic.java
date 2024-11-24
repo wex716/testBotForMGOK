@@ -76,7 +76,7 @@ public class FaqLogic {
 
         } else if (textFromUser.equals(InlineButtonsStorage.MovePrevShow.getCallBackData())) {
 
-            transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
+            //transmittedData.setState(State.WaitingQuestionsOrApplicationOrHistory);
 
             messageToUser.setText("Выберите, с чем возникла проблема");
 
@@ -223,7 +223,7 @@ public class FaqLogic {
 
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getBackKeyboard());
 
-            transmittedData.setState(State.WaitingSecondInfoProblemPrinter);
+            transmittedData.setState(State.WaitingFirstInfoProblemPrinter);
 
             return messageToUser;
 

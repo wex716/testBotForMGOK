@@ -12,13 +12,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ServiceManager {
+
     private Map<String, Service> methods;
 
     private StartLogic startLogic;
     private FaqLogic faqLogic;
     private ApplicationLogic applicationLogic;
     private HistoryApplicationLogic historyApplicationLogic;
-
 
     public ServiceManager() {
 
@@ -27,7 +27,7 @@ public class ServiceManager {
         faqLogic = new FaqLogic();
         applicationLogic = new ApplicationLogic();
 
-        //начало работы бота
+        //region начало работы бота
         methods.put(State.WaitingCommandStart, startLogic::processWaitingCommandStart);
 
         methods.put(State.WaitingQuestionsOrApplicationOrHistory, startLogic::processWaitingQuestionsOrApplicationOrHistory);
@@ -35,8 +35,11 @@ public class ServiceManager {
         methods.put(State.WaitingQuestions, startLogic::processWaitingQuestions);
 
         methods.put(State.WaitingSubmitApplication, startLogic::processWaitingQuestionsOrApplicationOrHistory);
-        methods.put(State.WaitingApplication, startLogic::processWaitingApplication);
 
+        methods.put(State.WaitingApplication, startLogic::processWaitingApplication);
+//endregion
+
+        //region заявка
         methods.put(State.WaitingInputCabinetNumber, applicationLogic::processWaitingInputCabinetNumber);
         methods.put(State.WaitingInputFullName, applicationLogic::processWaitingInputFullName);
         methods.put(State.WaitingInputNumberPhone, applicationLogic::processWaitingInputNumberTelephone);
@@ -45,7 +48,7 @@ public class ServiceManager {
         methods.put(State.WaitingPhoto, applicationLogic::processWaitingPhoto);
         methods.put(State.WaitingDataVerification, applicationLogic::processWaitingDataVerification);
         methods.put(State.WaitingReadApplication, applicationLogic::processWaitingReadApplication);
-
+        //endregion
 
         //region просмотр комп
         methods.put(State.WaitingViewProblemComputer, faqLogic::processWaitingViewProblemComputer);
@@ -68,9 +71,6 @@ public class ServiceManager {
         methods.put(State.WaitingSecondInfoProblemProjector, faqLogic::processWaitingSecondInfoProblemProjector);
         methods.put(State.WaitingThirdInfoProblemProjector, faqLogic::processWaitingThirdInfoProblemProjector);
 //endregion
-
-        //заявка
-
     }
 
     public SendMessage callLogicMethod(String textFromUser, TransmittedData transmittedData) throws Exception {

@@ -6,11 +6,10 @@ import org.example.statemachine.DataStorage;
 import org.example.statemachine.State;
 import org.example.statemachine.TransmittedData;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
-import org.telegram.telegrambots.meta.api.objects.InputFile;
 
 public class ApplicationLogic {
 
+    //region ввод номера кабинета
     public SendMessage processWaitingInputCabinetNumber(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
@@ -26,14 +25,20 @@ public class ApplicationLogic {
         transmittedData.setState(State.WaitingInputFullName);
         return messageToUser;
     }
+    //endregion
 
+    //region ввод ФИО
     public SendMessage processWaitingInputFullName(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
 
-        if (textFromUser.isEmpty() || textFromUser.length() > 100) {
-            messageToUser.setText("Ошибка ввода ФИО. Повторите ввод");
+        if (textFromUser.isEmpty()) {
+            messageToUser.setText("Ошибка ввода ФИО. Повторите ввод, поле не может быть пустым");
+            return messageToUser;
+        }
+        if (textFromUser.length() < 1 && textFromUser.length() > 100) {
+            messageToUser.setText("Ошибка ввода ФИО. Введите ФИО в диапазоне от 1 до 100 символов");
             return messageToUser;
         }
 
@@ -43,8 +48,9 @@ public class ApplicationLogic {
 
         return messageToUser;
     }
+    //endregion
 
-
+    //region ввод номера телефона
     public SendMessage processWaitingInputNumberTelephone(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
@@ -67,8 +73,9 @@ public class ApplicationLogic {
 
         return messageToUser;
     }
+    //endregion
 
-
+    //region ввод описания проблемы
     public SendMessage processWaitingDescriptionProblem(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
@@ -85,7 +92,9 @@ public class ApplicationLogic {
 
         return messageToUser;
     }
+    //endregion
 
+    //region проверка на фото + кнопки (да(переходим в состояние которое обрабатывает фото, нет(идем дальше))
     public SendMessage processWaitingQuestionAddPhoto(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
@@ -103,6 +112,7 @@ public class ApplicationLogic {
             transmittedData.setState(State.WaitingPhoto);
 
             return messageToUser;
+
         } else if (textFromUser.equals(InlineButtonsStorage.NoSendPhoto.getCallBackData())) {
 
             DataStorage data = transmittedData.getDataStorage();
@@ -126,13 +136,15 @@ public class ApplicationLogic {
         }
         return messageToUser;
     }
+    //endregion
 
+    //region обработка фото и вывод даныых для верификации
     public SendMessage processWaitingPhoto(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
-
         messageToUser.setText("Фото успешно прикреплено!");
+
         DataStorage data = transmittedData.getDataStorage();
 
         StringBuilder messageText = new StringBuilder("Проверьте данные\n\n");
@@ -152,7 +164,9 @@ public class ApplicationLogic {
 
         return messageToUser;
     }
+    //endregion
 
+    //region номер заявки для пользователя
     public SendMessage processWaitingDataVerification(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
@@ -173,19 +187,25 @@ public class ApplicationLogic {
             transmittedData.getDataStorage().clear();
 
             return messageToUser;
+
         } else if (textFromUser.equals(InlineButtonsStorage.CancelApplication.getCallBackData())) {
 
-
             transmittedData.setState(State.WaitingApplication);
+
             messageToUser.setText("Пожалуйста, выберите адрес площадки.");
 
             messageToUser.setReplyMarkup(InlineKeyboardsStorage.getAddressKeyboard());
+
+            transmittedData.getDataStorage().clear();
+
             return messageToUser;
         }
 
         return messageToUser;
     }
+    //endregion
 
+    //region обработка кнопок
     public SendMessage processWaitingReadApplication(String textFromUser, TransmittedData transmittedData) throws Exception {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
@@ -207,7 +227,6 @@ public class ApplicationLogic {
 
         return messageToUser;
     }
-
-
+    //endregion
 }
 

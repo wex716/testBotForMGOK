@@ -252,9 +252,6 @@ public class InlineKeyboardsStorage {
         row.add(button);
         keyboard.add(row);
 
-
-
-
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         inlineKeyboardMarkup.setKeyboard(keyboard);
 
