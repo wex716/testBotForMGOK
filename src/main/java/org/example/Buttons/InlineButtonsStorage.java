@@ -28,8 +28,7 @@ public class InlineButtonsStorage {
     public final static InlineButton SecondAddressPlace = new InlineButton("Лодочная 7", "SecondAddressPlace");
     public final static InlineButton ThirdAddressPlace = new InlineButton("Молдавская 5", "ThirdAddressPlace");
     public final static InlineButton FourAddressPlace = new InlineButton("Просп. Буденного 35", "FourAddressPlace");
-    public final static InlineButton FiveAddressPlace = new InlineButton("Просп. Буденного 35", "FiveAddressPlace");
-    public final static InlineButton SixAddressPlace = new InlineButton("Волгоградский проспект 42 корпус 5.", "SixAddressPlace");
+    public final static InlineButton FiveAddressPlace = new InlineButton("Волгоградский проспект 42 корпус 5.", "FiveAddressPlace");
 
     public final static InlineButton YesSendPhoto = new InlineButton("Да", "Yes");
     public final static InlineButton NoSendPhoto = new InlineButton("Нет", "No");

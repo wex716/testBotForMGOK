@@ -238,14 +238,7 @@ public class InlineKeyboardsStorage {
         row.add(button);
         keyboard.add(row);
 
-        row = new ArrayList<>();
-        button = new InlineKeyboardButton();
-        button.setText(InlineButtonsStorage.SixAddressPlace.getTitle());
-        button.setCallbackData(InlineButtonsStorage.SixAddressPlace.getCallBackData());
-        row.add(button);
-        keyboard.add(row);
-
-        row = new ArrayList<>();
+               row = new ArrayList<>();
         button = new InlineKeyboardButton();
         button.setText(InlineButtonsStorage.BackToMenu.getTitle());
         button.setCallbackData(InlineButtonsStorage.BackToMenu.getCallBackData());

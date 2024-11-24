@@ -122,7 +122,7 @@ public class StartLogic {
         SendMessage messageToUser = new SendMessage();
         messageToUser.setChatId(transmittedData.getChatId());
 
-        if (!textFromUser.equals(InlineButtonsStorage.FirstAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.SecondAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.ThirdAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.FourAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.FiveAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.SixAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
+        if (!textFromUser.equals(InlineButtonsStorage.FirstAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.SecondAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.ThirdAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.FourAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.FiveAddressPlace.getCallBackData()) && !textFromUser.equals(InlineButtonsStorage.BackToMenu.getCallBackData())) {
 
             messageToUser.setText("Ошибка. Нажмите на кнопку.");
 
@@ -154,12 +154,6 @@ public class StartLogic {
 
             return messageToUser;
         } else if (textFromUser.equals(InlineButtonsStorage.FiveAddressPlace.getCallBackData())) {
-
-            messageToUser.setText("Введите номер кабинета");
-            transmittedData.setState(State.WaitingInputCabinetNumber);
-
-            return messageToUser;
-        } else if (textFromUser.equals(InlineButtonsStorage.SixAddressPlace.getCallBackData())) {
 
             messageToUser.setText("Введите номер кабинета");
             transmittedData.setState(State.WaitingInputCabinetNumber);
